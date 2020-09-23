@@ -8,36 +8,49 @@
 		<h1 class="text-6xl uppercase font-bold text-center">{{ entry.title }}</h1>
 	
 
-		{% if entry.vorschaubild | length %}
-			<img class="max-w-xl mx-auto" src="{{ entry.vorschaubild.one.getUrl() }}">
+		<div class="flex items-center justify-center"> 
+			<div class="flex-initial pr-6">
+			{% if entry.vorschaubild | length %}
+				<img class="rounded-lg max-w-xl mx-auto" src="{{ entry.vorschaubild.one.getUrl() }}">
+			{% endif %}
+			</div>
 
-		{% endif %}
+			<div class="flex-none pl-2">
+			<ul class="my-16">
+			<li class="py-4">
+			<h2>Datum</h2>
+			{{ entry.startdatum | date('d.m.Y') }}
+			{{ entry.startzeit | date('H:i') }}
+			</li>
 
-		<h2>Startdatum</h2>
-		{{ entry.startdatum | date('d.m.Y') }}
-		{{ entry.startzeit | date('H:i') }}
+			<li class="py-4">
+			<h2>Enddatum</h2>
+			{{ entry.enddatum | date('d.m.Y') }}
+			{{ entry.endzeit | date('H:i') }}
+			</li>
+			
+			<li class="py-4">
+			<h2>Dauer</h2>
+			</li>
 
-		<h2>Enddatum</h2>
-		{{ entry.enddatum | date('d.m.Y') }}
-		{{ entry.endzeit | date('H:i') }}
-		
-		<h2>Dauer</h2>
+			<li>
+			<h2>Cost contribution</h2>
+			{{ entry.kosten }} Euro
+			</li>
 
-<h2>Cost contribution</h2>
-{{ entry.kosten }} Euro
+			<li>
+			<h2>Meeting point</h2>
+			{{ entry.ortTreffpunkt }}
+			</li>
+			<li>
+			<h2>Language</h2>
+			{{ entry.sprache }}
+			</li>
 
-<h2>Meeting point</h2>
-{{ entry.ortTreffpunkt }}
+			</ul>
+			</div>
+		</div>
 
-<!--
-{% if entry.koordinaten is defined %}
-<h2>Coordinates</h2>
-
-{% endif %}
--->
-
-<h2>Language</h2>
-{{ entry.sprache }}
 
 <div class="contentBlocks">
 			{% include '_contentBlocks' %}

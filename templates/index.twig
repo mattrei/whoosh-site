@@ -15,7 +15,7 @@
 			
 		</div>
 		
-		<div class="termine">
+		<div class="termine flex justify-center">
 			
 			{% set termine = craft.entries
 				.section('termine')
@@ -27,11 +27,15 @@
 					
 					<li class="flex flex-row items-center mb-4" data-start="{{ termin.startdatum | date('Ymd') }}">
 						{% if termin.vorschaubild | length %}
-							<img class="block mr-4 flex-none" src="{{ termin.vorschaubild.one.getUrl }}" alt="{{ termin.vorschaubild.one.altText }}">
+							<a href="{{ termin.url }}">
+							<img class="rounded block mr-4 flex-none" src="{{ termin.vorschaubild.one.getUrl }}" alt="{{ termin.vorschaubild.one.altText }}">
+							</a>
 						{% endif %}
 						
 						<div class="mr-4">
+							<a href="{{ termin.url }}">
 							{{ termin.startdatum | date('d.m.Y') }}
+							</a>
 						</div>
 						
 						<div class="mr-4 flex-1">
