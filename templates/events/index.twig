@@ -5,8 +5,13 @@
 
 	<div class="container mx-auto mt-24">
 		<h1 class="text-6xl uppercase font-bold text-center">Events</h1>
-	
-		<ul class="my-16">
+
+		<div class="flex justify-center my-12">
+			<button class="px-2 m-4 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Upcoming</button>
+			<button class="px-2 mg-4 btn btn-blue">Past</button>
+		</div>	
+
+		<ul class="my-8">
 			{% set termine = craft.entries
 				.section('termine')
 				.startdatum( '>=' ~ now | date('Y-m-d') )
