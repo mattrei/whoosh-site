@@ -1,0 +1,49 @@
+{% set bodyClass = "start" %}
+{% extends '_layout' %}
+
+{% block content %}
+
+	<div class="container mx-auto px-4">
+		
+		<div class="h-screen flex flex-col justify-end">
+		
+			<img src="/assets/whoosh-logo.svg" id="logo" class="block mx-auto" alt="Whoosh Logo">
+		
+			<div class="introText text-2xl md:text-3xl lg:text-4xl text-center p-16 pb-24">
+				{{ start.introText | nl2br }}
+			</div>
+			
+		</div>
+		
+		<div class="termine">
+			
+			{% set termine = craft.entries
+				.section('termine')
+				.startdatum( '>=' ~ now | date('Y-m-d') )
+				.orderBy( 'startdatum asc' ) %}
+			
+			<ul>
+				{% for termin in termine.all() %}
+					
+					<li class="flex flex-row items-center mb-4" data-start="{{ termin.startdatum | date('Ymd') }}">
+						{% if termin.vorschaubild | length %}
+							<img class="block mr-4 flex-none" src="{{ termin.vorschaubild.one.getUrl }}" alt="{{ termin.vorschaubild.one.altText }}">
+						{% endif %}
+						
+						<div class="mr-4">
+							{{ termin.startdatum | date('d.m.Y') }}
+						</div>
+						
+						<div class="mr-4 flex-1">
+							<a href="{{ termin.url }}">
+							{{ termin.title }}
+							</a>
+						</div>
+						
+					</li>
+					
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endblock %}

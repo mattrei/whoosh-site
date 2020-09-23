@@ -1,0 +1,27 @@
+{% for block in entry.contentBlocks.all %}
+	
+	{% if block.type == "textBlock" %}
+		<div class="textBlock max-w-md mx-auto">
+			{{ block.text }}
+		</div>
+	
+	{% elseif block.type == "bildBlock" %}
+		{% set img = block.bild.one %}
+		
+		<figure>
+			<img src="{{ img.getUrl }}"
+			     sizes="100vw"
+			     srcset="{% include '_srcset' %}"
+			     alt="{{ img.altText }}">
+			
+			{% if img.bildunterschrift | length %}
+				<figcaption>{{ img.bildunterschrift }}</figcaption>
+			{% endif %}
+		</figure>
+	
+	
+	{% endif%}
+	
+
+
+{% endfor %}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="{{ craft.app.locale }}">
+<head>
+	{% set pageTitle = systemName %}
+	{% if title is defined %}
+		{% set pageTitle = title ~ " — " ~ pageTitle %}
+	{% endif %}
+	
+	{% set metadesc = metaData.metaDescription %}
+	{% if desc is defined %}
+		{% set metadesc = desc %}
+	{% endif %}
+	
+	<meta charset="utf-8" />
+	<title>{{ pageTitle }}</title>
+	<meta name="title" content="{{ pageTitle }}">
+	
+	<meta name="description" content="{{ metadesc }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	{% set sharingImage = false %}
+	{% if shareImg is defined %}
+		{% set sharingImage = shareImg.getUrl('shareImage') %}
+	{% endif %}
+	
+	<meta property="og:type" content="website">
+	{% if sharingImage %}
+		<meta property="og:image" content="{{ sharingImage }}">
+	{% endif %}
+	<meta property="og:url" content="{{ craft.app.request.absoluteUrl }}">
+	
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="{{ craft.app.request.absoluteUrl }}">
+	{% if sharingImage %}
+		<meta property="twitter:image" content="{{ sharingImage }}">
+	{% endif %}
+	<meta property="twitter:title" content="{{ pageTitle }}">
+	<meta property="twitter:description" content="{{ metadesc }}">
+	
+	{% if metaData.favicon |length %}
+		
+		{% set favicon = metaData.favicon.one %}
+		
+		<link rel="apple-touch-icon" sizes="57x57" href="{% include '_favicon' with { width: 57 } %}">
+		<link rel="apple-touch-icon" sizes="60x60" href="{% include '_favicon' with { width: 60 } %}">
+		<link rel="apple-touch-icon" sizes="72x72" href="{% include '_favicon' with { width: 72 } %}">
+		<link rel="apple-touch-icon" sizes="76x76" href="{% include '_favicon' with { width: 76 } %}">
+		<link rel="apple-touch-icon" sizes="114x114" href="{% include '_favicon' with { width: 114 } %}">
+		<link rel="apple-touch-icon" sizes="120x120" href="{% include '_favicon' with { width: 120 } %}">
+		<link rel="apple-touch-icon" sizes="144x144" href="{% include '_favicon' with { width: 144 } %}">
+		<link rel="apple-touch-icon" sizes="152x152" href="{% include '_favicon' with { width: 152 } %}">
+		<link rel="apple-touch-icon" sizes="180x180" href="{% include '_favicon' with { width: 180 } %}">
+		
+		<link rel="icon" type="image/png" sizes="32x32" href="{% include '_favicon' with { width: 57 } %}">
+		<link rel="icon" type="image/png" sizes="96x96" href="{% include '_favicon' with { width: 96 } %}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{% include '_favicon' with { width: 16 } %}">
+	
+	{% endif %}
+	
+	<!--
+  <link rel="preload" href="/assets/fonts/3403C4_0_0.woff2" as="font" type="font/woff" crossorigin="anonymous">
+  -->
+	
+	{% do view.registerCssFile("/assets/tailwind.css?v=20200604" ~ random() ) %}
+	{% do view.registerCssFile("/assets/whoosh.css?v=20200604" ~ random() ) %}
+
+</head>
+
+{% if bodyClass is not defined %}
+	{% set bodyClass = "" %}
+{% endif %}
+
+<body class="{{ bodyClass }} flex flex-col min-h-screen">
+
+<header id="mainHeader" class="fixed top-0 w-full z-40 text-center">
+	<div class="flex justify-between container mx-auto px-4 py-4">
+		<button id="navToggle" class="">
+			<svg width="42" height="24" viewBox="0 0 42 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M3 2H3.15678H14.2881L14.6017 2.57575L14.7585 2H28.2415L28.5551 2.6909L28.8686 2H40L34.1992 21.9209H23.0678L21.5 16.8543L20.089 21.9209H8.95763L3 2Z"
+				      stroke="black" stroke-width="3"/>
+			</svg>
+		</button>
+		
+		{# <button id="menuButton" aria-label="Toggle Menu" onclick="document.body.classList.toggle('openNav'); return false;">
+			<span id="topBar" class="bar"></span>
+			<span id="middleBar" class="bar">
+				<span class="inside"></span>
+				<span class="inside"></span>
+			</span>
+			<span id="bottomBar" class="bar"></span>
+		</button> #}
+		
+		<div class="flex items-center">
+			<div id="dateTime">{{ now | date('D M j | H:i') }}</div>
+			&nbsp;|&nbsp;
+			<div id="weather" class="flex items-center">{{ "" | weatherInfo | raw }}</div>
+		</div>
+	</div>
+</header>
+
+<nav id="mainNav" class="hidden fixed z-30 inset-0 bg-white w-screen h-screen flex justify-center items-center">
+	<ul class="text-center text-6xl font-bold uppercase leading-relaxed">
+		<li><a class="{% if craft.app.request.segments|first == "/" %}active{% endif %}" href="{{ url('/') }}">Start</a></li>
+		<li><a class="{% if craft.app.request.segments|first == "events" %}active{% endif %}" href="{{ url('events') }}">Events</a></li>
+		<li><a class="{% if craft.app.request.segments|first == "about-us" %}active{% endif %}" href="{{ url('about-us') }}">About us</a></li>
+		<li><a class="{% if craft.app.request.segments|first == "connect" %}active{% endif %}" href="{{ url('connect') }}">Connect</a></li>
+	</ul>
+</nav>
+
+<main class="mb-24 flex-grow">
+	{% block content %}{% endblock %}
+</main>
+
+<!--
+<footer id="mainFooter" class="fixed bottom-0 z-20 w-full ">
+	<div class="bg-white m-4 py-2 border border-solid border-black border-r-0 border-l-0">
+		<div class="flex justify-between container mx-auto px-4">
+			IN | FB
+		</div>
+	</div>
+</footer>
+-->
+
+
+<footer id="mainFooter" class="pin-b p-4 border border-solid border-black border-r-0 border-l-0 w-full">
+        <ul class="text-center">
+           <li>Copyright Whoosh, 2020.</li>
+           <li><a href="{{ url('imprint') }}">Impressum</a></li>
+	</ul>
+</footer>
+
+<script src="/assets/whoosh.js?v=20200408-{{ random()}}" defer></script>
+</body>
+</html>

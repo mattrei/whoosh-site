@@ -1,0 +1,14 @@
+/.env
+/.idea
+/vendor
+.DS_Store
+
+*.lock
+package-lock.json
+
+/config
+/modules
+/web
+/tailwind
+/usage
+/storage

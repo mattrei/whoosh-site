@@ -1,0 +1,44 @@
+{% set bodyClass = "events" %}
+{% extends '_layout' %}
+
+{% block content %}
+
+	<div class="container mx-auto mt-24">
+		<h1 class="text-6xl uppercase font-bold text-center">Events</h1>
+	
+		<ul class="my-16">
+			{% set termine = craft.entries
+				.section('termine')
+				.startdatum( '>=' ~ now | date('Y-m-d') )
+				.orderBy( 'startdatum asc' ) %}
+			
+			{% for termin in termine.all %}
+				
+				
+				<li class="py-8 flex items-center justify-between border border-solid border-black {% if not loop.first %}border-t-0{% endif%} border-r-0 border-l-0">
+					<div class="flex-none date font-bold text-center uppercase pr-6 text-2xl">
+						{{ termin.startdatum | date('d') }}<br>
+						{{ termin.startdatum | date('M') }}
+					</div>
+					
+					<div class="flex-none time pr-6">
+						{{ termin.startdatum | date('H:i') }}
+					</div>
+					
+					<div class="flex-1 desc pr-6">
+						<a href="{{ termin.url }}">
+						{{ termin.title }}
+						</a>
+					</div>
+					
+					<div class="img flex-none">
+						{% if termin.vorschaubild | length %}
+							<img class="block w-40 rounded-lg" src="{{ termin.vorschaubild.one.getUrl }}" alt="{{ termin.vorschaubild.one.altText }}">
+						{% endif %}
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% set bodyClass = "event" %}
+{% set title = entry.title %}
+{% extends '_layout' %}
+
+{% block content %}
+
+	<div class="container mx-auto mt-24">
+		<h1 class="text-6xl uppercase font-bold text-center">{{ entry.title }}</h1>
+	
+
+		{% if entry.vorschaubild | length %}
+			<img class="max-w-xl mx-auto" src="{{ entry.vorschaubild.one.getUrl() }}">
+
+		{% endif %}
+
+		<h2>Startdatum</h2>
+		{{ entry.startdatum | date('d.m.Y') }}
+		{{ entry.startzeit | date('H:i') }}
+
+		<h2>Enddatum</h2>
+		{{ entry.enddatum | date('d.m.Y') }}
+		{{ entry.endzeit | date('H:i') }}
+		
+		<h2>Dauer</h2>
+
+<h2>Cost contribution</h2>
+{{ entry.kosten }} Euro
+
+<h2>Meeting point</h2>
+{{ entry.ortTreffpunkt }}
+
+<!--
+{% if entry.koordinaten is defined %}
+<h2>Coordinates</h2>
+
+{% endif %}
+-->
+
+<h2>Language</h2>
+{{ entry.sprache }}
+
+<div class="contentBlocks">
+			{% include '_contentBlocks' %}
+		</div>
+
+{% if entry.anmerkungen | length %}
+<h2>Anmerkungen</h2>
+{{ entry.anmerkungen }}
+{% endif %}
+	</div>
+
+{% endblock %}
