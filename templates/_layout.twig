@@ -70,16 +70,19 @@
 	{% set bodyClass = "" %}
 {% endif %}
 
-<body class="{{ bodyClass }} flex flex-col min-h-screen">
+<body class="{{ bodyClass }}">
 
 <header id="mainHeader" class="fixed top-0 w-full z-40 text-center">
-	<div class="flex justify-between container mx-auto px-4 py-4">
-		<button id="navToggle" class="">
-			<svg width="42" height="24" viewBox="0 0 42 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M3 2H3.15678H14.2881L14.6017 2.57575L14.7585 2H28.2415L28.5551 2.6909L28.8686 2H40L34.1992 21.9209H23.0678L21.5 16.8543L20.089 21.9209H8.95763L3 2Z"
-				      stroke="black" stroke-width="3"/>
-			</svg>
+	<div class="flex justify-between items-center container mx-auto px-4 py-4">
+		{# mobil soll das logo der nav button sein #}
+		<button id="navToggle" class="block md:hidden">
+			<img src="/assets/whoosh-logo.svg" class="block h-6 w-auto" alt="Whoosh Logo">
 		</button>
+		
+		{# am desktop ist logo ein link zur startseite #}
+		<a href="{{ url('/') }}" class="hidden md:block ">
+			<img src="/assets/whoosh-logo.svg" class="h-6 w-auto" alt="Whoosh Logo">
+		</a>
 		
 		{# <button id="menuButton" aria-label="Toggle Menu" onclick="document.body.classList.toggle('openNav'); return false;">
 			<span id="topBar" class="bar"></span>
@@ -90,6 +93,13 @@
 			<span id="bottomBar" class="bar"></span>
 		</button> #}
 		
+		<div id="mainNav" class="hidden lg:block">
+			{% include '_nav' with {
+				class: "text-xl flex",
+				subclass: "px-2 underline hover:no-underline"
+			} %}
+		</div>
+		
 		<div class="flex items-center">
 			<div id="dateTime">{{ now | date('D M j | H:i') }}</div>
 			&nbsp;|&nbsp;
@@ -98,16 +108,14 @@
 	</div>
 </header>
 
-<nav id="mainNav" class="hidden fixed z-30 inset-0 bg-white w-screen h-screen flex justify-center items-center">
-	<ul class="text-center text-6xl font-bold uppercase leading-relaxed">
-		<li><a class="{% if craft.app.request.segments|first == "/" %}active{% endif %}" href="{{ url('/') }}">Start</a></li>
-		<li><a class="{% if craft.app.request.segments|first == "events" %}active{% endif %}" href="{{ url('events') }}">Events</a></li>
-		<li><a class="{% if craft.app.request.segments|first == "about-us" %}active{% endif %}" href="{{ url('about-us') }}">About us</a></li>
-		<li><a class="{% if craft.app.request.segments|first == "connect" %}active{% endif %}" href="{{ url('connect') }}">Connect</a></li>
-	</ul>
+<nav id="mobileNav" class="hidden fixed z-30 inset-0 bg-white w-screen h-screen flex justify-center items-center">
+	{% include '_nav' with {
+		class: "text-3xl font-bold uppercase leading-relaxed",
+		subclass: ""
+	} %}
 </nav>
 
-<main class="mb-24 flex-grow">
+<main class="mb-24">
 	{% block content %}{% endblock %}
 </main>
 
@@ -121,9 +129,9 @@
 
 
 <footer id="mainFooter" class="pin-b p-4 border border-solid border-black border-r-0 border-l-0 w-full">
-        <ul class="text-center">
-           <li>Copyright Whoosh, 2020.</li>
-           <li><a href="{{ url('imprint') }}">Impressum</a></li>
+	<ul class="text-center">
+		<li>&copy; Whoosh 2020.</li>
+		<li><a href="{{ url('imprint') }}">Impressum</a></li>
 	</ul>
 </footer>
 

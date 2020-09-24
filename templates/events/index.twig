@@ -2,48 +2,29 @@
 {% extends '_layout' %}
 
 {% block content %}
-
+	
 	<div class="container mx-auto mt-24">
 		<h1 class="text-6xl uppercase font-bold text-center">Events</h1>
-
-		<div class="flex justify-center my-12">
-			<button class="px-2 m-4 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Upcoming</button>
-			<button class="px-2 mg-4 btn btn-blue">Past</button>
-		</div>	
-
-		<ul class="my-8">
+		
+		<div class="flex justify-center my-12 ">
+			<button id="showUpcomingEvents" class="px-2 m-2 font-semibold bg-blue text-white hover:bg-blue hover:text-white py-2 px-4 border border-blue rounded">Upcoming</button>
+			<button id="showPastEvents" class="px-2 m-2 font-semibold bg-transparent text-blue hover:bg-blue hover:text-white py-2 px-4 border border-blue rounded">Past</button>
+		</div>
+		
+		<ul id="eventsList" class="my-8 border border-black border-solid border-r-0 border-b-0 border-l-0" data-show="upcoming">
+			{% set termine = craft.entries
+				.section( 'termine' )
+				.orderBy( 'startdatum asc' ) %}
+			
+			{#
 			{% set termine = craft.entries
 				.section('termine')
 				.startdatum( '>=' ~ now | date('Y-m-d') )
 				.orderBy( 'startdatum asc' ) %}
+			#}
 			
 			{% for termin in termine.all %}
-				
-				
-				<li class="py-8 flex items-center justify-between border border-solid border-black {% if not loop.first %}border-t-0{% endif%} border-r-0 border-l-0">
-					<div class="flex-none date font-bold text-center uppercase pr-6 text-2xl">
-						{{ termin.startdatum | date('d') }}<br>
-						{{ termin.startdatum | date('M') }}
-					</div>
-					
-					<div class="flex-none time pr-6">
-						{{ termin.startdatum | date('H:i') }}
-					</div>
-					
-					<div class="flex-1 desc pr-6">
-						<a href="{{ termin.url }}">
-						{{ termin.title }}
-						</a>
-					</div>
-					
-					<div class="img flex-none">
-						{% if termin.vorschaubild | length %}
-						<a href="{{ termin.url }}">
-							<img class="block w-40 rounded-lg" src="{{ termin.vorschaubild.one.getUrl }}" alt="{{ termin.vorschaubild.one.altText }}">
-</a>
-						{% endif %}
-					</div>
-				</li>
+				{% include 'events/preview' %}
 			{% endfor %}
 		</ul>
 	</div>
