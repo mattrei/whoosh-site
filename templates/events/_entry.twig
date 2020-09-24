@@ -9,17 +9,17 @@
 			{{ entry.title }}
 		</h1>
 		
-		<div class="flex items-center justify-center">
-			<div class="flex-initial pr-6">
+		<div class="md:flex items-center justify-center mb-8">
+			<div class="flex-initial pr-6 mb-6">
 				{% if entry.vorschaubild | length %}
 					<img class="rounded-lg max-w-xl mx-auto" src="{{ entry.vorschaubild.one.getUrl() }}">
 				{% endif %}
 			</div>
 			
 			<div class="flex-none pl-2">
-				<ul class="my-16">
-					<li class="py-4">
-						<h2>Datum</h2>
+				<ul class="">
+					<li class="mb-4">
+						<h2 class="font-bold">Datum</h2>
 						{{ entry.startdatum | date('d.m.Y') }}
 						{{ entry.startzeit | date('H:i') }}
 						
@@ -29,31 +29,30 @@
 					</li>
 					
 					{% if entry.enddatum | length %}
-						<li class="py-4">
-							<h2>Enddatum</h2>
+						<li class="mb-4">
+							<h2 class="font-bold">Enddatum</h2>
 							{{ entry.enddatum | date('d.m.Y') }}
 							{{ entry.endzeit | date('H:i') }}
 						</li>
 					{% endif %}
 					
 					{% if entry.enddatum | length %}
-						<li>
-							<h2>Kosten</h2>
+						<li class="mb-4">
+							<h2 class="font-bold">Kosten</h2>
 							{{ entry.kosten }} Euro
 						</li>
 					{% endif %}
 					
 					{% if entry.enddatum | length %}
-						<li>
-							<h2>Ort / Treffpunkt</h2>
+						<li class="mb-4">
+							<h2 class="font-bold">Ort / Treffpunkt</h2>
 							{{ entry.ortTreffpunkt }}
 						</li>
 					{% endif %}
 					
-					
 					{% if entry.enddatum | length %}
-						<li>
-							<h2>Sprache</h2>
+						<li class="mb-4">
+							<h2 class="font-bold">Sprache</h2>
 							{{ entry.sprache }}
 						</li>
 					{% endif %}
