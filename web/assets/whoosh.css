@@ -1,0 +1,158 @@
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:after, blockquote:before, q:after, q:before {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both; }
+
+img {
+  width: 100%;
+  max-width: 100%; }
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/assets/fonts/Montserrat-Regular.woff2") format("woff2"), url("/assets/fonts/Montserrat-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal; }
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/assets/fonts/Montserrat-Light.woff2") format("woff2"), url("/assets/fonts/Montserrat-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal; }
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/assets/fonts/Montserrat-Medium.woff2") format("woff2"), url("/assets/fonts/Montserrat-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal; }
+@font-face {
+  font-family: 'Montserrat';
+  src: url("/assets/fonts/Montserrat-Bold.woff2") format("woff2"), url("/assets/fonts/Montserrat-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal; }
+* {
+  box-sizing: border-box; }
+
+html {
+  font-size: 16px; }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  line-height: 1.25; }
+
+a {
+  transition: color 0.3s ease-in-out; }
+  a:link, a:visited {
+    color: inherit;
+    text-decoration: none; }
+  a:hover, a:active {
+    color: inherit;
+    text-decoration: none; }
+
+#mainHeader .weatherImgWrapper {
+  background-color: gainsboro; }
+#mainHeader .weatherIcon {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+#menuButton {
+  position: absolute;
+  top: 1.2rem;
+  right: 5vw;
+  z-index: 5;
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  display: none; }
+  #menuButton .bar {
+    width: 1.5rem;
+    height: 2px;
+    display: block;
+    background: black;
+    border-radius: 1px;
+    transform-origin: 56% 50%;
+    transition: transform 0.2s ease-in-out 0.2s, opacity 0.1s linear 0.2s; }
+    #menuButton .bar#topBar {
+      transform-origin: 0 1px; }
+    #menuButton .bar#middleBar {
+      margin: 5px 0;
+      transition: transform 0.2s ease-in-out 0.2s, background 0.2s ease-in-out 0.2s;
+      position: relative; }
+      #menuButton .bar#middleBar .inside {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: black;
+        transition: transform 0.2s ease-in-out; }
+    #menuButton .bar#bottomBar {
+      transform-origin: 0 180%; }
+
+.openNav #menuButton .bar {
+  transition: transform 0.2s ease-in-out, opacity 0.1s linear 0.2s; }
+.openNav #menuButton #topBar {
+  transform: translateY(7px);
+  opacity: 0; }
+.openNav #menuButton #bottomBar {
+  transform: translateY(-7px);
+  opacity: 0; }
+.openNav #menuButton #middleBar {
+  background: transparent;
+  transition: transform 0.2s ease-in-out 0.2s; }
+  .openNav #menuButton #middleBar .inside {
+    transition: transform 0.2s ease-in-out 0.2s;
+    transform: rotate(45deg); }
+    .openNav #menuButton #middleBar .inside:last-child {
+      transform: rotate(-45deg); }
+
+.termine img {
+  width: 5rem; }
+
+
+.textBlock p:not(:last-child) {
+  margin-bottom: 1.1em; 
+  }
+
+.about-us {
+  background: rgba(255, 70, 242, 0.42); }
+
+.contact {
+  background-image: url("/assets/backgrounds/connect.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*# sourceMappingURL=whoosh.css.map */

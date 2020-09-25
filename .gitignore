@@ -1,3 +1,5 @@
+*.scssc
+
 /.env
 /.idea
 /vendor
@@ -9,8 +11,7 @@ package-lock.json
 /config
 /modules
 
-/web/**/*
-!/web/assets/
+/web
 
 /tailwind
 /usage
