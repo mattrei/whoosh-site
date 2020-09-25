@@ -67,6 +67,12 @@ body {
   font-weight: 500;
   line-height: 1.25; }
 
+em {
+  font-weight: 500; }
+
+strong {
+  font-weight: bold; }
+
 a {
   transition: color 0.3s ease-in-out; }
   a:link, a:visited {
@@ -139,20 +145,19 @@ a {
 .termine img {
   width: 5rem; }
 
-
 .textBlock p:not(:last-child) {
-  margin-bottom: 1.1em; 
-  }
+  margin-bottom: 1.1em; }
 
 .about-us {
   background: rgba(255, 70, 242, 0.42); }
 
-.contact {
-  background-image: url("/assets/backgrounds/connect.jpg");
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+#eventsList[data-show="upcoming"] li.upcoming {
+  display: flex; }
+#eventsList[data-show="upcoming"] li.past {
+  display: none; }
+#eventsList[data-show="past"] li.upcoming {
+  display: none; }
+#eventsList[data-show="past"] li.past {
+  display: flex; }
 
 /*# sourceMappingURL=whoosh.css.map */
