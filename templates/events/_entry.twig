@@ -2,6 +2,7 @@
 {% set title = entry.title %}
 {% extends '_layout' %}
 
+{% set dayDiff = date(entry.enddatum | date('c')).diff(date(entry.startdatum | date('c'))).days  %}
 {% block content %}
 	
 	<div class="container mx-auto mt-24">
@@ -15,26 +16,31 @@
 					<img class="rounded-lg max-w-xl mx-auto" src="{{ entry.vorschaubild.one.getUrl() }}">
 				{% endif %}
 			</div>
+
 			
 			<div class="flex-none pl-2">
 				<ul class="">
 					<li class="mb-4">
 						<h2 class="font-bold">Datum</h2>
 						{{ entry.startdatum | date('d.m.Y') }}
-						{{ entry.startzeit | date('H:i') }}
+						{{ entry.startdatum | date('H:i') }}
 						
-						{% if entry.enddatum | length < 1 and entry.endzeit | length %}
-							&mdash; {{ entry.endzeit | date('H:i') }}
+						{% if dayDiff == 0 %}
+							&mdash; {{ entry.enddatum | date('H:i') }}
 						{% endif %}
 					</li>
 					
-					{% if entry.enddatum | length %}
+					{% if dayDiff != 0 %}
 						<li class="mb-4">
 							<h2 class="font-bold">Enddatum</h2>
 							{{ entry.enddatum | date('d.m.Y') }}
-							{{ entry.endzeit | date('H:i') }}
+							{{ entry.enddatum | date('H:i') }}
 						</li>
 					{% endif %}
+						<li class="mb-4">
+							<h2 class="font-bold">Dauer</h2>
+							{{ date(entry.enddatum | date('c')).diff(date(entry.startdatum | date('c'))).format('%h h %i mins') }}
+						</li>
 					
 					{% if entry.enddatum | length %}
 						<li class="mb-4">
