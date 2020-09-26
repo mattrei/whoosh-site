@@ -10,10 +10,10 @@
 			{{ entry.title }}
 		</h1>
 		
-		<div class="md:flex items-center justify-center mb-8">
+		<div class="flex flex-wrap items-center justify-center mb-8">
 			<div class="flex-initial pr-6 mb-6">
 				{% if entry.vorschaubild | length %}
-					<img class="rounded-lg max-w-xl mx-auto" src="{{ entry.vorschaubild.one.getUrl() }}">
+					<img class="rounded-lg max-w-md" src="{{ entry.vorschaubild.one.getUrl() }}">
 				{% endif %}
 			</div>
 

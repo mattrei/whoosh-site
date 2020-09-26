@@ -55,6 +55,9 @@ if (showSocialContainerButton) {
 	showSocialContainerButton.addEventListener('mouseover', function() {
 		socialContainer.classList.remove('hidden');
 	})
+	showSocialContainerButton.addEventListener('touchstart', function() {
+		socialContainer.classList.toggle('hidden');
+	})
 	showSocialContainerButton.addEventListener('mouseout', function() {
 		socialContainer.classList.add('hidden');
 	})
