@@ -48,3 +48,14 @@ if( showUpcomingEventsButton && showPastEventsButton ){
         eventsList.dataset.show = "past";
     })
 }
+
+const socialContainer = document.querySelector('#socialContainer')
+const showSocialContainerButton = document.querySelector('#showSocialContainerButton');
+if (showSocialContainerButton) {
+	showSocialContainerButton.addEventListener('mouseover', function() {
+		socialContainer.classList.remove('hidden');
+	})
+	showSocialContainerButton.addEventListener('mouseout', function() {
+		socialContainer.classList.add('hidden');
+	})
+}
