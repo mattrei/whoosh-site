@@ -57,6 +57,18 @@
 							{{ entry.ortTreffpunkt }}
 						</li>
 					{% endif %}
+					{% if entry.koordinaten | length %}
+						<li class="mb-4">
+<a href="{{entry.koordinaten}}" target="_blank"><ion-icon name="map-outline"></ion-icon> Google Maps</a>
+						</li>
+					{% endif %}
+					{% if entry.telephone | length %}
+						<li class="mb-4">
+<ion-icon name="call-outline"></ion-icon> {{ entry.telephone }} {% if entry.user | length %}
+{{ entry.user.one }}
+{% endif %}
+						</li>
+					{% endif %}
 					
 					{% if entry.sprache | length %}
 						<li class="mb-4">
