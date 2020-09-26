@@ -21,8 +21,16 @@
 			<div class="flex-none pl-2">
 				<ul class="">
 					<li class="mb-4">
-						<h2 class="font-bold">Datum</h2>
+<ion-icon name="calendar-outline"></ion-icon>
 						{{ entry.startdatum | date('d.m.Y') }}
+					{% if dayDiff != 0 %}
+						&mdash; 
+							{{ entry.enddatum | date('d.m.Y') }}
+							{{ entry.enddatum | date('H:i') }}
+					{% endif %}
+					</li>
+					<li class="mb-4">
+<ion-icon name="time-outline"></ion-icon>
 						{{ entry.startdatum | date('H:i') }}
 						
 						{% if dayDiff == 0 %}
@@ -30,35 +38,29 @@
 						{% endif %}
 					</li>
 					
-					{% if dayDiff != 0 %}
 						<li class="mb-4">
-							<h2 class="font-bold">Enddatum</h2>
-							{{ entry.enddatum | date('d.m.Y') }}
-							{{ entry.enddatum | date('H:i') }}
-						</li>
-					{% endif %}
-						<li class="mb-4">
-							<h2 class="font-bold">Dauer</h2>
+<ion-icon name="hourglass-outline"></ion-icon>
+
 							{{ date(entry.enddatum | date('c')).diff(date(entry.startdatum | date('c'))).format('%h h %i mins') }}
 						</li>
 					
-					{% if entry.enddatum | length %}
+					{% if entry.kosten | length %}
 						<li class="mb-4">
-							<h2 class="font-bold">Kosten</h2>
-							{{ entry.kosten }} Euro
+<ion-icon name="logo-euro"></ion-icon>
+							{{ entry.kosten }} 
 						</li>
 					{% endif %}
 					
-					{% if entry.enddatum | length %}
+					{% if entry.ortTreffpunkt | length %}
 						<li class="mb-4">
-							<h2 class="font-bold">Ort / Treffpunkt</h2>
+<ion-icon name="location-outline"></ion-icon>
 							{{ entry.ortTreffpunkt }}
 						</li>
 					{% endif %}
 					
-					{% if entry.enddatum | length %}
+					{% if entry.sprache | length %}
 						<li class="mb-4">
-							<h2 class="font-bold">Sprache</h2>
+<ion-icon name="language-outline"></ion-icon>
 							{{ entry.sprache }}
 						</li>
 					{% endif %}
