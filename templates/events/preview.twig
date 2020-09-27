@@ -16,15 +16,16 @@
 	
 	<div class="img flex-none">
 		{% if termin.vorschaubild | length %}
+			{% set img = termin.vorschaubild.one %}
+			
 			<a href="{{ termin.url }}">
 				<img class="block w-40 rounded-lg h-auto"
-				     src="{{ termin.vorschaubild.one.getUrl }}"
-				     alt="{{ termin.vorschaubild.one.altText }}"
+				     src="{{ img.getUrl }}"
+				     alt="{{ img.altText }}"
 				     width="{{ img.width }}"
 				     height="{{ img.height }}"
 				     sizes="80px"
-				     srcset="{% include '_srcset' %}"
-				>
+				     srcset="{% include '_srcset' %}">
 			</a>
 		{% endif %}
 	</div>
