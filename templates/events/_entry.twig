@@ -5,7 +5,7 @@
 {% set dayDiff = date(entry.enddatum | date('c')).diff(date(entry.startdatum | date('c'))).days %}
 {% block content %}
 	
-	<div class="container px-3 mx-auto mt-24 lg:mt-30">
+	<div class="xl:container px-3 mx-auto mt-24 lg:mt-30">
 		<h1 class="text-4xl uppercase font-bold text-center mb-12 max-w-3xl mx-auto">
 			{{ entry.title }}
 		</h1>
@@ -18,14 +18,14 @@
 					     alt="{{ img.altText }}"
 					     width="{{ img.width }}"
 					     height="{{ img.height }}"
-					     sizes="90vw, (min-width: 640px) 616px, (min-width: 768px) 448px"
+					     sizes="95vw, (min-width: 768px) 448px"
 					     srcset="{% include '_srcset' %}"
 					     src="{{ img.getUrl() }}">
 				{% endif %}
 			</div>
 			
 			
-			<div class="md:pl-2">
+			<div class="">
 				<ul class="">
 					<li class="mb-4">
 						<ion-icon name="calendar-outline"></ion-icon>

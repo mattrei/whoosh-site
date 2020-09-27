@@ -8,25 +8,27 @@
 	{% elseif block.type == "bildBlock" %}
 		{% if block.bildbreite == "ganzeBreite" %}
 		
-			{% set sizes = "90vw, (min-width: 640px) 616px, (min-width: 768px) 448px " %}
+			{% set sizes = "95vw, (min-width: 1280px) 1256px" %}
 			{% set wrapperClass = "grid grid-cols-1" %}
 			
 		{% elseif block.bildbreite == "halbeBreite" %}
+			{% set sizes = "45vw, (min-width: 1280px) 620px" %}
 			{% set wrapperClass = "grid grid-cols-1 gap-4 md:grid-cols-2" %}
 			
 		{% elseif block.bildbreite == "viertelBreite" %}
+			{% set sizes = "23vw, (min-width: 1280px) 300px" %}
 			{% set wrapperClass = "grid grid-cols-1 gap-4 md:grid-cols-2" %}
 			
 		{% endif %}
 
-		<div class="{{ wrapperClass }}">
+		<div class="my-4 {{ wrapperClass }}">
 			{% for img in block.bild %}
-				<figure class="my-8">
+				<figure class="my-2">
 					<img src="{{ img.getUrl }}"
 					     width="{{ img.width }}"
 					     height="{{ img.height }}"
 					     class="h-auto"
-					     sizes="100vw"
+					     sizes="{{ sizes }}"
 					     srcset="{% include '_srcset' %}"
 					     alt="{{ img.altText }}">
 
