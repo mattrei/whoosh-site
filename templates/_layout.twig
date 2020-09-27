@@ -73,7 +73,7 @@
 <body class="{{ bodyClass }}">
 
 <header id="mainHeader" class="fixed top-0 w-full z-40 text-center bg-opacity-75 bg-white">
-	<div class="flex justify-between items-center container mx-auto px-4 py-4">
+	<div class="flex justify-between items-center xl:container px-3 py-4 mx-auto">
 		{# mobil soll das logo der nav button sein #}
 		<button id="navToggle" class="block md:hidden">
 			<img src="/assets/whoosh-logo.svg" class="block h-6 w-auto" alt="Whoosh Logo">
@@ -96,7 +96,7 @@
 		<div id="mainNav" class="hidden lg:block">
 			{% include '_nav' with {
 				class: "text-xl flex",
-				subclass: "px-2 underline hover:no-underline"
+				subclass: "px-2 hover:underline"
 			} %}
 		</div>
 		

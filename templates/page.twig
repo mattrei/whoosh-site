@@ -5,7 +5,7 @@
 
 {% block content %}
 	
-	<div class="container mx-auto mt-24">
+	<div class="xl:container px-3  mx-auto mt-24">
 		<h1 class="text-6xl uppercase font-bold text-center mb-6">
 			{{ entry.title }}
 		</h1>
@@ -23,9 +23,12 @@
 					<a href="{{ person.url }}">
 						{% if person.portrait | length %}
 							{% set img = person.portrait.one %}
-							<img class="rounded-lg" src="{{ img.getUrl }}" alt="Portrait von {{ person.title }}"
+							<img class="rounded-lg h-auto" src="{{ img.getUrl }}"
+							     alt="Portrait von {{ person.title }}"
 							     srcset="{% include '_srcset' %}"
-							     sizes="20vw">
+							     width="{{ img.width }}"
+							     height="{{ img.height }}"
+							     sizes="23vw, (min-width: 1280px) 310px">
 						
 						{% else %}
 							{{ person.title }}
