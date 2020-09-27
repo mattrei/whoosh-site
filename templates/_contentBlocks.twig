@@ -12,16 +12,16 @@
 			{% set wrapperClass = "grid grid-cols-1" %}
 			
 		{% elseif block.bildbreite == "halbeBreite" %}
-			{% set wrapperClass = "grid grid-cols-1 gap-8 md:grid-cols-2" %}
+			{% set wrapperClass = "grid grid-cols-1 gap-4 md:grid-cols-2" %}
 			
 		{% elseif block.bildbreite == "viertelBreite" %}
-			{% set wrapperClass = "grid grid-cols-1 gap-8 md:grid-cols-4" %}
+			{% set wrapperClass = "grid grid-cols-1 gap-4 md:grid-cols-2" %}
 			
 		{% endif %}
 
-		<div class="my-8 {{ wrapperClass }}">
+		<div class="{{ wrapperClass }}">
 			{% for img in block.bild %}
-				<figure>
+				<figure class="my-8">
 					<img src="{{ img.getUrl }}"
 					     width="{{ img.width }}"
 					     height="{{ img.height }}"
