@@ -23,8 +23,7 @@
 				.group('tags') %}
 			
 			{% for tag in tags.all() %}
-				{% if craft.entries.section( 'termine' ).relatedTo( tag )
-					.orderBy( 'startdatum asc' ) | length %}
+				{% if craft.entries.section( 'termine' ).relatedTo( tag ) | length %}
 					
 					<li class="px-2"><a class="hover:text-blue " href="{{ url('events/' ~ tag.slug ) }}">{{ tag.title }}</a></li>
 				
