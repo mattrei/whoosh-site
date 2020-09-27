@@ -17,7 +17,14 @@
 	<div class="img flex-none">
 		{% if termin.vorschaubild | length %}
 			<a href="{{ termin.url }}">
-				<img class="block w-40 rounded-lg" src="{{ termin.vorschaubild.one.getUrl }}" alt="{{ termin.vorschaubild.one.altText }}">
+				<img class="block w-40 rounded-lg h-auto"
+				     src="{{ termin.vorschaubild.one.getUrl }}"
+				     alt="{{ termin.vorschaubild.one.altText }}"
+				     width="{{ img.width }}"
+				     height="{{ img.height }}"
+				     sizes="80px"
+				     srcset="{% include '_srcset' %}"
+				>
 			</a>
 		{% endif %}
 	</div>

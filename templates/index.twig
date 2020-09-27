@@ -22,7 +22,7 @@
 			{% set termine = craft.entries
 				.section('termine')
 				.startdatum( '>=' ~ now | date('Y-m-d') )
-				.orderBy( 'startdatum asc' ) %}
+				.orderBy( 'startdatum asc' ).limit( 4 ) %}
 			
 			<ul class="border border-black border-solid border-r-0 border-b-0 border-l-0 max-w-3xl mx-auto">
 				{% for termin in termine.all() %}
@@ -31,6 +31,8 @@
 					
 				{% endfor %}
 			</ul>
+			<br>
+			<a href="{{ url('events') }}">Alle Events</a>
 		</div>
 	</div>
 {% endblock %}
