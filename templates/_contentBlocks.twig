@@ -22,7 +22,7 @@
 		{% endif %}
 
 		<div class="my-4 {{ wrapperClass }}">
-			{% for img in block.bild %}
+			{% for img in block.bild.all() %}
 				<figure class="my-2">
 					<img src="{{ img.getUrl }}"
 					     width="{{ img.width }}"
