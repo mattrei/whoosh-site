@@ -6,20 +6,36 @@
 		</div>
 	
 	{% elseif block.type == "bildBlock" %}
-		{% set img = block.bild.one %}
+		{% if block.bildbreite == "ganzeBreite" %}
 		
-		<figure>
-			<img src="{{ img.getUrl }}"
-			     sizes="100vw"
-			     srcset="{% include '_srcset' %}"
-			     alt="{{ img.altText }}">
+			{% set sizes = "90vw, (min-width: 640px) 616px, (min-width: 768px) 448px " %}
+			{% set wrapperClass = "grid grid-cols-1" %}
 			
-			{% if img.bildunterschrift | length %}
-				<figcaption>{{ img.bildunterschrift }}</figcaption>
-			{% endif %}
-		</figure>
-	
-	
+		{% elseif block.bildbreite == "halbeBreite" %}
+			{% set wrapperClass = "grid grid-cols-1 gap-8 md:grid-cols-2" %}
+			
+		{% elseif block.bildbreite == "viertelBreite" %}
+			{% set wrapperClass = "grid grid-cols-1 gap-8 md:grid-cols-4" %}
+			
+		{% endif %}
+
+		<div class="my-8 {{ wrapperClass }}">
+			{% for img in block.bild %}
+				<figure>
+					<img src="{{ img.getUrl }}"
+					     width="{{ img.width }}"
+					     height="{{ img.height }}"
+					     class="h-auto"
+					     sizes="100vw"
+					     srcset="{% include '_srcset' %}"
+					     alt="{{ img.altText }}">
+
+					{% if img.bildunterschrift | length %}
+						<figcaption>{{ img.bildunterschrift }}</figcaption>
+					{% endif %}
+				</figure>
+			{% endfor %}
+		</div>
 	{% endif%}
 	
 

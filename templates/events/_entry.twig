@@ -2,35 +2,42 @@
 {% set title = entry.title %}
 {% extends '_layout' %}
 
-{% set dayDiff = date(entry.enddatum | date('c')).diff(date(entry.startdatum | date('c'))).days  %}
+{% set dayDiff = date(entry.enddatum | date('c')).diff(date(entry.startdatum | date('c'))).days %}
 {% block content %}
 	
-	<div class="container mx-auto mt-24">
+	<div class="container px-3 mx-auto mt-24 lg:mt-30">
 		<h1 class="text-4xl uppercase font-bold text-center mb-12 max-w-3xl mx-auto">
 			{{ entry.title }}
 		</h1>
 		
-		<div class="flex flex-wrap items-center justify-center mb-8">
-			<div class="flex-initial pr-6 mb-6">
+		<div class="md:flex flex-wrap items-center justify-center mb-8">
+			<div class="flex-initial md:pr-6 mb-6">
 				{% if entry.vorschaubild | length %}
-					<img class="rounded-lg max-w-md" src="{{ entry.vorschaubild.one.getUrl() }}">
+					{% set img = entry.vorschaubild.one %}
+					<img class="rounded-lg md:max-w-md h-auto"
+					     alt="{{ img.altText }}"
+					     width="{{ img.width }}"
+					     height="{{ img.height }}"
+					     sizes="90vw, (min-width: 640px) 616px, (min-width: 768px) 448px"
+					     srcset="{% include '_srcset' %}"
+					     src="{{ img.getUrl() }}">
 				{% endif %}
 			</div>
-
 			
-			<div class="flex-none pl-2">
+			
+			<div class="md:pl-2">
 				<ul class="">
 					<li class="mb-4">
-<ion-icon name="calendar-outline"></ion-icon>
+						<ion-icon name="calendar-outline"></ion-icon>
 						{{ entry.startdatum | date('d.m.Y') }}
-					{% if dayDiff != 0 %}
-						&mdash; 
+						{% if dayDiff != 0 %}
+							&mdash;
 							{{ entry.enddatum | date('d.m.Y') }}
 							{{ entry.enddatum | date('H:i') }}
-					{% endif %}
+						{% endif %}
 					</li>
 					<li class="mb-4">
-<ion-icon name="time-outline"></ion-icon>
+						<ion-icon name="time-outline"></ion-icon>
 						{{ entry.startdatum | date('H:i') }}
 						
 						{% if dayDiff == 0 %}
@@ -38,41 +45,43 @@
 						{% endif %}
 					</li>
 					
-						<li class="mb-4">
-<ion-icon name="hourglass-outline"></ion-icon>
-
-							{{ date(entry.enddatum | date('c')).diff(date(entry.startdatum | date('c'))).format('%h h %i mins') }}
-						</li>
+					<li class="mb-4">
+						<ion-icon name="hourglass-outline"></ion-icon>
+						
+						{{ date(entry.enddatum | date('c')).diff(date(entry.startdatum | date('c'))).format('%h h %i mins') }}
+					</li>
 					
 					{% if entry.kosten | length %}
 						<li class="mb-4">
-<ion-icon name="logo-euro"></ion-icon>
-							{{ entry.kosten }} 
+							<ion-icon name="logo-euro"></ion-icon>
+							{{ entry.kosten }}
 						</li>
 					{% endif %}
 					
 					{% if entry.ortTreffpunkt | length %}
 						<li class="mb-4">
-<ion-icon name="location-outline"></ion-icon>
+							<ion-icon name="location-outline"></ion-icon>
 							{{ entry.ortTreffpunkt }}
 						</li>
 					{% endif %}
 					{% if entry.koordinaten | length %}
 						<li class="mb-4">
-<a href="{{entry.koordinaten}}" target="_blank"><ion-icon name="map-outline"></ion-icon> Google Maps</a>
+							<a href="{{ entry.koordinaten }}" target="_blank">
+								<ion-icon name="map-outline"></ion-icon>
+								Google Maps</a>
 						</li>
 					{% endif %}
 					{% if entry.telephone | length %}
 						<li class="mb-4">
-<ion-icon name="call-outline"></ion-icon> {{ entry.telephone }} {% if entry.user | length %}
-{{ entry.user.one }}
-{% endif %}
+							<ion-icon name="call-outline"></ion-icon> {{ entry.telephone }} {% if entry.user | length %}
+								{{ entry.user.one }}
+							{% endif %}
 						</li>
 					{% endif %}
 					
 					{% if entry.sprache | length %}
 						<li class="mb-4">
-<ion-icon name="language-outline"></ion-icon>
+							<ion-icon name="language-outline"></ion-icon>
 							{{ entry.sprache }}
 						</li>
 					{% endif %}
