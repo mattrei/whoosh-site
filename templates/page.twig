@@ -15,9 +15,9 @@
 		</div>
 		
 		{% if entry.slug == "about-us" %}
-			<div class="team mt-16 grid grid-cols-4 gap-4 items-center">
-				
-				<h2 class="text-4xl uppercase font-bold text-center mb-4 col-span-2">Team</h2>
+			<h2 class="text-4xl uppercase font-bold text-center mt-24 mb-4">Team</h2>
+			
+			<div class="team mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-center">
 				
 				{% for person in craft.entries.section('team').all %}
 					<a href="{{ person.url }}">
@@ -28,7 +28,7 @@
 							     srcset="{% include '_srcset' %}"
 							     width="{{ img.width }}"
 							     height="{{ img.height }}"
-							     sizes="23vw, (min-width: 1280px) 310px">
+							     sizes="50vw, (min-width: 768px) 30vw, (min-width: 1024px) 25vw, (min-width: 1280px) 300px">
 						
 						{% else %}
 							{{ person.title }}
