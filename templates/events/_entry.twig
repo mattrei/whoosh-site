@@ -73,11 +73,10 @@
 						</li>
 					{% endif %}
 					
-					{% if entry.telephone | length %}
+					{% if entry.user | length %}
 						<li class="mb-4 flex items-center">
-							<ion-icon name="call-outline" class=" mr-3"></ion-icon> {{ entry.telephone }} {% if entry.user | length %}
-								{{ entry.user.one }}
-							{% endif %}
+							<ion-icon name="call-outline" class=" mr-3"></ion-icon> {{ entry.user.one.telephone }},
+								{{ entry.user.one.title }}
 						</li>
 					{% endif %}
 					
@@ -92,6 +91,7 @@
 			</div>
 		</div>
 		
+<!--
 		{% if entry.user | length %}
 			<ul class="user mb-16">
 				{% for user in entry.user %}
@@ -105,7 +105,7 @@
 				{% endfor %}
 			</ul>
 		{% endif %}
-		
+-->		
 		
 		<div class="contentBlocks">
 			{% include '_contentBlocks' %}

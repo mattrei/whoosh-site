@@ -23,11 +23,9 @@
     }
 
   .word-default {
-      fill: cadetblue;
       font-weight: normal;
     }
   .word-hovered {
-      fill: teal;
       font-weight: bold;
     }
 
@@ -58,13 +56,13 @@ console.log(width, height, selector)
   const svg = parent.append("svg")
     .attr("id", "word-cloud")
     .attr("viewBox", [0, 0, width, height])
-    .attr("font-family", fontFamily)
+    //.attr("font-family", fontFamily)
     .attr("text-anchor", "middle");
 
   const cloud = d3.layout.cloud()
     .size([width, height])
     .words(data.map(d => Object.create(d)))
-    .padding(Math.random() * 2 + 1)
+    .padding(Math.random() * 3 + 2)
     //.rotate(() => Math.random() * 90 - 45)
     .rotate(() => ~~(Math.random() * 2) * 90 )
     .font(fontFamily)
@@ -85,7 +83,7 @@ console.log(width, height, selector)
           d3.select(this)
             .classed("word-hovered", true)
             .transition(`mouseover-${text}`).duration(200).ease(d3.easeLinear)
-              .attr("font-size", size + 2)
+              .attr("font-size", size + 0.5)
               .attr("font-weight", "bold");
         }
         
