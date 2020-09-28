@@ -28,7 +28,7 @@
 			<div class="">
 				<ul class="">
 					<li class="mb-4 flex items-center">
-						<ion-icon name="calendar-outline mr-3"></ion-icon>
+						<ion-icon name="calendar-outline" class=" mr-3"></ion-icon>
 						{{ entry.startdatum | date('d.m.Y') }}
 						{% if dayDiff != 0 %}
 							&mdash;
@@ -37,7 +37,7 @@
 						{% endif %}
 					</li>
 					<li class="mb-4 flex items-center">
-						<ion-icon name="time-outline mr-3"></ion-icon>
+						<ion-icon name="time-outline" class=" mr-3"></ion-icon>
 						{{ entry.startdatum | date('H:i') }}
 						
 						{% if dayDiff == 0 %}
@@ -46,21 +46,21 @@
 					</li>
 					
 					<li class="mb-4 flex items-center">
-						<ion-icon name="hourglass-outline mr-3"></ion-icon>
+						<ion-icon name="hourglass-outline" class=" mr-3"></ion-icon>
 						
 						{{ date(entry.enddatum | date('c')).diff(date(entry.startdatum | date('c'))).format('%h h %i mins') }}
 					</li>
 					
 					{% if entry.kosten | length %}
 						<li class="mb-4 flex items-center">
-							<ion-icon name="logo-euro mr-3"></ion-icon>
+							<ion-icon name="logo-euro" class=" mr-3"></ion-icon>
 							{{ entry.kosten }}
 						</li>
 					{% endif %}
 					
 					{% if entry.ortTreffpunkt | length %}
 						<li class="mb-4 flex items-center">
-							<ion-icon name="location-outline mr-3"></ion-icon>
+							<ion-icon name="location-outline" class=" mr-3"></ion-icon>
 							{{ entry.ortTreffpunkt }}
 						</li>
 					{% endif %}
@@ -68,14 +68,14 @@
 					{% if entry.koordinaten | length %}
 						<li class="mb-4">
 							<a class=" flex items-center" href="{{ entry.koordinaten }}" target="_blank">
-								<ion-icon name="map-outline mr-3"></ion-icon>
+								<ion-icon name="map-outline" class=" mr-3"></ion-icon>
 								Google Maps</a>
 						</li>
 					{% endif %}
 					
 					{% if entry.telephone | length %}
 						<li class="mb-4 flex items-center">
-							<ion-icon name="call-outline mr-3"></ion-icon> {{ entry.telephone }} {% if entry.user | length %}
+							<ion-icon name="call-outline" class=" mr-3"></ion-icon> {{ entry.telephone }} {% if entry.user | length %}
 								{{ entry.user.one }}
 							{% endif %}
 						</li>
@@ -83,7 +83,7 @@
 					
 					{% if entry.sprache | length %}
 						<li class="mb-4 flex items-center">
-							<ion-icon name="language-outline mr-3"></ion-icon>
+							<ion-icon name="language-outline" class=" mr-3"></ion-icon>
 							{{ entry.sprache }}
 						</li>
 					{% endif %}
@@ -93,7 +93,7 @@
 		</div>
 		
 		{% if entry.user | length %}
-			<ul class="user">
+			<ul class="user mb-16">
 				{% for user in entry.user %}
 					<li>
 						{{ user.title }}:
