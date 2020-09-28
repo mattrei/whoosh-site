@@ -101,8 +101,9 @@
 			} %}
 		</div>
 		
-		<div class="flex items-center">
-			<div id="dateTime">{{ now | date('D M j | H:i') }}</div>
+		<div class="flex items-center text-sm md:text-md">
+			<div class="hidden md:block">{{ now | date('D M j | H:i') }}</div>
+			<div class="block md:hidden">{{ now | date('d.m. | H:i') }}</div>
 			&nbsp;|&nbsp;
 			<div id="weather" class="flex items-center">{{ "" | weatherInfo | raw }}</div>
 		</div>
