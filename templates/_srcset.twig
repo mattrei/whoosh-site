@@ -1,11 +1,10 @@
 {% spaceless %}
-	{% set allTransforms = craft.app.getAssetTransforms.getAllTransforms() %}
-	{% for transform in allTransforms %}
-		{% if transform.handle != "share" and img.extension != "gif" %}
-			{{ img.getUrl( transform.handle ) }} {{ img.width( transform.handle ) }}w
-		{% endif %}
-	{% endfor %}
-	
-	{{ img.getUrl() }} {{ img.width() }}w
-
+	{% if img.extension != "gif" %}
+		{% set allTransforms = craft.app.getAssetTransforms.getAllTransforms() %}
+		{% for transform in allTransforms %}
+			{% if transform.handle != "share" %}
+				{{ img.getUrl( transform.handle ) }} {{ img.width( transform.handle ) }}w{% if not loop.last %},{% endif %}
+			{% endif %}
+		{% endfor %}
+	{% endif %}
 {% endspaceless %}
