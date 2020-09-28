@@ -62,3 +62,4 @@ if (showSocialContainerButton) {
 		socialContainer.classList.add('hidden');
 	})
 }
+
