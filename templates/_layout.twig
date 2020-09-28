@@ -71,7 +71,7 @@
 	{% set bodyClass = "" %}
 {% endif %}
 
-<body class="{{ bodyClass }}">
+<body class="{{ bodyClass }} flex flex-col min-h-screen">
 
 <header id="mainHeader" class="fixed top-0 w-full z-40 text-center bg-opacity-75 bg-white">
 	<div class="flex justify-between items-center xl:container px-3 py-4 mx-auto">
@@ -117,7 +117,7 @@
 	} %}
 </nav>
 
-<main class="mb-24">
+<main class="mb-24 flex-grow">
 	{% block content %}{% endblock %}
 </main>
 

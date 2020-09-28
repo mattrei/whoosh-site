@@ -1,4 +1,4 @@
-<li class="{% if termin.startdatum | date('Y-m-d') >= now | date('Y-m-d') %}upcoming{% else %}past{% endif %} py-4 flex items-center justify-between border border-solid border-black border-t-0 border-r-0 border-l-0">
+<li class="{% if termin.startdatum | date('Y-m-d') >= now | date('Y-m-d') %}upcoming{% else %}past{% endif %} {{liclass}} flex items-center justify-between border border-solid border-black border-t-0 border-r-0 border-l-0">
 	<div class="flex-none date font-bold text-center uppercase pr-6 text-xl">
 		{{ termin.startdatum | date('d') }}<br>
 		{{ termin.startdatum | date('M') }}
@@ -19,7 +19,7 @@
 			{% set img = termin.vorschaubild.one %}
 			
 			<a href="{{ termin.url }}">
-				<img class="block w-40 rounded-lg h-auto"
+				<img class="block {{imgclass}} rounded-lg h-auto"
 				     src="{{ img.getUrl }}"
 				     alt="{{ img.altText }}"
 				     width="{{ img.width }}"
