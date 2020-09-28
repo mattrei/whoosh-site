@@ -30,10 +30,6 @@
       fill: teal;
       font-weight: bold;
     }
-  .word-selected {
-      fill: darkslategrey;
-      font-weight: bold;
-    }
 
 </style>
 
@@ -51,39 +47,34 @@ console.log(width, height, selector)
   if (height === 0) return;
 
 
-const fill = d3.scaleOrdinal(d3.schemeCategory10);;
-  const s = d3.scaleSqrt()
-    .domain([1, d3.max(data.map(d => d.value))])
-    .range([6, 82]);
+  const fill = d3.scaleOrdinal(d3.schemeCategory10);
+  const s = d3.scaleLinear()
+    .domain([d3.min(data.map(d => d.value)), d3.max(data.map(d => d.value))])
+    .range([16, 42]);
+
+
   const fontFamily = "Verdana, Arial, Helvetica, sans-serif";
   
   const svg = parent.append("svg")
     .attr("id", "word-cloud")
     .attr("viewBox", [0, 0, width, height])
     .attr("font-family", fontFamily)
-.style("fill", function(d, i) { return fill(i); })
     .attr("text-anchor", "middle");
 
-  const displaySelection = svg.append("text")
-    .attr("font-family", "Lucida Console, Courier, monospace")
-    .attr("text-anchor", "start")
-    .attr("alignment-baseline", "hanging")
-    .attr("x", 10)
-    .attr("y", 10);
-
-    
   const cloud = d3.layout.cloud()
     .size([width, height])
     .words(data.map(d => Object.create(d)))
     .padding(Math.random() * 2 + 1)
     //.rotate(() => Math.random() * 90 - 45)
-.rotate(function() { return ~~(Math.random() * 2) * 90; })
+    .rotate(() => ~~(Math.random() * 2) * 90 )
     .font(fontFamily)
     .fontSize(d => s(d.value))
-    .on("word", ({size, x, y, rotate, text}) => {
+    .on("word", ({size, x, y, rotate, text, href}) => {
       svg.append("text")
         .attr("font-size", size)
+        .style("fill", fill(size))
         .attr("transform", `translate(${x},${y}) rotate(${rotate})`)
+        .attr("data-href", href)
         .text(text)
         .classed("click-only-text", true)
         .classed("word-default", true)
@@ -101,15 +92,15 @@ const fill = d3.scaleOrdinal(d3.schemeCategory10);;
         function handleMouseOut(d, i) {
           d3.select(this)
             .classed("word-hovered", false)
-            .interrupt(`mouseover-${text}`)
-              .attr("font-size", size);
+            .transition(`mouseover-${text}`).duration(200).ease(d3.easeLinear)
+              .attr("font-size", size)
+            //.interrupt(`mouseover-${text}`)
+              //.attr("font-size", size);
         }
         
         function handleClick(d, i) {
-          var e = d3.select(this);
-//https://test.whoosh.wien/events/education
-          displaySelection.text(`selection="${e.text()}"`);
-          e.classed("word-selected", !e.classed("word-selected"));
+          const e = d3.select(this);
+          window.location.href = e.attr('data-href');
         }
     });
   
@@ -117,11 +108,12 @@ const fill = d3.scaleOrdinal(d3.schemeCategory10);;
 
 }
 
-  const tags = d3.selectAll('#tags > li').data(d => d.attr('data-title'))
- const t = tags.each(t => t.attr('data-title'))
-console.log('tags', tags.size(), tags.attr('data-title'))
-  const data = [ {text:'education', value: 2}, {text: 'you', value: 3}, {text: 'so', value: 2}]
+  const tags = Array.from(document.querySelector('#tags').children).map((e,i) => {
+	return {text: e.getAttribute('data-title'), href: e.getAttribute('data-href'), value: i}
+	})
+console.log('tags', tags)
 
-  createWordCloud(data, '#wordcloud')
+
+  createWordCloud(tags, '#wordcloud')
 
 </script>
