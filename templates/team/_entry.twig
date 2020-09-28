@@ -14,8 +14,8 @@
 				{% if entry.portrait | length %}
 					{% set img = entry.portrait.one %}
 					<img class="rounded-lg max-w-xl mx-auto h-auto"
-					     src="{{ entry.portrait.one.getUrl() }}"
-					     alt="Portrait von {{ person.title }}"
+					     src="{{ img.getUrl() }}"
+					     alt="Portrait von {{ entry.title }}"
 					     sizes="95vw, (min-width: 768px) 448px"
 					     srcset="{% include '_srcset' %}"
 					     width="{{ img.width }}"
