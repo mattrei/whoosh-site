@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
   margin: 0;
   padding: 0;
@@ -14,15 +10,6 @@ article, aside, details, figcaption, figure, footer, header, menu, nav, section 
 
 body {
   line-height: 1; }
-
-@layer base {
-  h1 {
-    @apply text-2xl;
-  }
-  h2 {
-    @apply text-xl;
-  }
-}
 
 ol, ul {
   list-style: none; }
@@ -155,14 +142,8 @@ a {
     .openNav #menuButton #middleBar .inside:last-child {
       transform: rotate(-45deg); }
 
-.termine img {
-  width: 5rem; }
-
 .textBlock p:not(:last-child) {
   margin-bottom: 1.1em; }
-
-.about-us {
-  background: rgba(255, 70, 242, 0.42); }
 
 #eventsList[data-show="upcoming"] li.upcoming {
   display: flex; }
