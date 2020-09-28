@@ -12,7 +12,14 @@
 		<div class="md:flex items-center justify-center mb-8">
 			<div class="flex-initial pr-6 mb-6">
 				{% if entry.portrait | length %}
-					<img class="rounded-lg max-w-xl mx-auto" src="{{ entry.portrait.one.getUrl() }}">
+					{% set img = entry.portrait.one %}
+					<img class="rounded-lg max-w-xl mx-auto h-auto"
+					     src="{{ entry.portrait.one.getUrl() }}"
+					     alt="Portrait von {{ person.title }}"
+					     sizes="95vw, (min-width: 768px) 448px"
+					     srcset="{% include '_srcset' %}"
+					     width="{{ img.width }}"
+					     height="{{ img.height }}">
 				{% endif %}
 			</div>
 		</div>
