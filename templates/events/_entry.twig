@@ -28,7 +28,7 @@
 			<div class="">
 				<ul class="">
 					<li class="mb-4 flex items-center">
-						{% include '../icons/calendar' %}
+						{% include 'icons/calendar' %}
 						
 						{{ entry.startdatum | date('d.m.Y') }}
 						{% if dayDiff != 0 %}
@@ -39,7 +39,7 @@
 					</li>
 					
 					<li class="mb-4 flex items-center">
-						{% include '../icons/time' %}
+						{% include 'icons/time' %}
 						{{ entry.startdatum | date('H:i') }}
 						
 						{% if dayDiff == 0 %}
@@ -48,21 +48,21 @@
 					</li>
 					
 					<li class="mb-4 flex items-center">
-						{% include '../icons/hourglass' %}
+						{% include 'icons/hourglass' %}
 						
 						{{ date(entry.enddatum | date('c')).diff(date(entry.startdatum | date('c'))).format('%h h %i mins') }}
 					</li>
 					
 					{% if entry.kosten | length %}
 						<li class="mb-4 flex items-center">
-							{% include '../icons/euro' %}
+							{% include 'icons/euro' %}
 							{{ entry.kosten }}
 						</li>
 					{% endif %}
 					
 					{% if entry.ortTreffpunkt | length %}
 						<li class="mb-4 flex items-center">
-							{% include '../icons/location' %}
+							{% include 'icons/location' %}
 							{{ entry.ortTreffpunkt }}
 						</li>
 					{% endif %}
@@ -70,14 +70,14 @@
 					{% if entry.koordinaten | length %}
 						<li class="mb-4">
 							<a class=" flex items-center" href="{{ entry.koordinaten }}" target="_blank">
-								{% include '../icons/map' %}
+								{% include 'icons/map' %}
 								Google Maps</a>
 						</li>
 					{% endif %}
 					
 					{% if entry.user | length %}
 						<li class="mb-4 flex items-center">
-							{% include '../icons/call' %}
+							{% include 'icons/call' %}
 							{{ entry.user.one.telephone }},
 								{{ entry.user.one.title }}
 						</li>
@@ -85,7 +85,7 @@
 					
 					{% if entry.sprache | length %}
 						<li class="mb-4 flex items-center">
-							{% include '../icons/language' %}
+							{% include 'icons/language' %}
 							{{ entry.sprache }}
 						</li>
 					{% endif %}
