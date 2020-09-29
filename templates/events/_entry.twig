@@ -28,7 +28,8 @@
 			<div class="">
 				<ul class="">
 					<li class="mb-4 flex items-center">
-						<ion-icon name="calendar-outline" class=" mr-3"></ion-icon>
+						{% include '../icons/calendar' %}
+						
 						{{ entry.startdatum | date('d.m.Y') }}
 						{% if dayDiff != 0 %}
 							&mdash;
@@ -36,8 +37,9 @@
 							{{ entry.enddatum | date('H:i') }}
 						{% endif %}
 					</li>
+					
 					<li class="mb-4 flex items-center">
-						<ion-icon name="time-outline" class=" mr-3"></ion-icon>
+						{% include '../icons/time' %}
 						{{ entry.startdatum | date('H:i') }}
 						
 						{% if dayDiff == 0 %}
@@ -46,21 +48,21 @@
 					</li>
 					
 					<li class="mb-4 flex items-center">
-						<ion-icon name="hourglass-outline" class=" mr-3"></ion-icon>
+						{% include '../icons/hourglass' %}
 						
 						{{ date(entry.enddatum | date('c')).diff(date(entry.startdatum | date('c'))).format('%h h %i mins') }}
 					</li>
 					
 					{% if entry.kosten | length %}
 						<li class="mb-4 flex items-center">
-							<ion-icon name="logo-euro" class=" mr-3"></ion-icon>
+							{% include '../icons/euro' %}
 							{{ entry.kosten }}
 						</li>
 					{% endif %}
 					
 					{% if entry.ortTreffpunkt | length %}
 						<li class="mb-4 flex items-center">
-							<ion-icon name="location-outline" class=" mr-3"></ion-icon>
+							{% include '../icons/location' %}
 							{{ entry.ortTreffpunkt }}
 						</li>
 					{% endif %}
@@ -68,21 +70,22 @@
 					{% if entry.koordinaten | length %}
 						<li class="mb-4">
 							<a class=" flex items-center" href="{{ entry.koordinaten }}" target="_blank">
-								<ion-icon name="map-outline" class=" mr-3"></ion-icon>
+								{% include '../icons/map' %}
 								Google Maps</a>
 						</li>
 					{% endif %}
 					
 					{% if entry.user | length %}
 						<li class="mb-4 flex items-center">
-							<ion-icon name="call-outline" class=" mr-3"></ion-icon> {{ entry.user.one.telephone }},
+							{% include '../icons/call' %}
+							{{ entry.user.one.telephone }},
 								{{ entry.user.one.title }}
 						</li>
 					{% endif %}
 					
 					{% if entry.sprache | length %}
 						<li class="mb-4 flex items-center">
-							<ion-icon name="language-outline" class=" mr-3"></ion-icon>
+							{% include '../icons/language' %}
 							{{ entry.sprache }}
 						</li>
 					{% endif %}
