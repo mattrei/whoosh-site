@@ -63,7 +63,7 @@
 					{% if entry.ortTreffpunkt | length %}
 						<li class="mb-4 flex items-center">
 							{% include 'icons/location' %}
-							{{ entry.ortTreffpunkt }}
+							{{ entry.ortTreffpunkt | nl2br }}
 						</li>
 					{% endif %}
 					
