@@ -1,7 +1,8 @@
 <li class="{% if termin.startdatum | date('Y-m-d') >= now | date('Y-m-d') %}upcoming{% else %}past{% endif %} {{liclass}} flex items-center justify-between border border-solid border-black border-t-0 border-r-0 border-l-0">
 	<div class="flex-none date font-bold text-center uppercase pr-6 md:text-xl sm:text-l">
-		{{ termin.startdatum | date('d') }}<br>
-		{{ termin.startdatum | date('M') }}
+		{{ termin.startdatum | date('d') }}<br/>
+		{{ termin.startdatum | date('M') }}<br/>
+		<span class="text-sm font-normal">{{ termin.startdatum | date('Y') }}</span>
 	</div>
 	
 	<div class="flex-none time pr-6">
