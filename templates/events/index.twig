@@ -18,7 +18,7 @@
 			<button id="showPastEvents" class="px-2 m-2 font-semibold bg-transparent text-blue hover:bg-blue hover:text-white py-2 px-4 border border-blue rounded">Past</button>
 		</div>
 		
-		<ul class="flex justify-center my-12">
+		<ul class="flex justify-center flex-wrap my-12">
 			{% set tags = craft.tags()
 				.group('tags') %}
 			
