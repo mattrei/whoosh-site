@@ -55,7 +55,7 @@
 					
 					{% if entry.kosten | length %}
 						<li class="mb-4 flex items-center">
-							<ion-icon name="logo-euro" class=" mr-3"></ion-icon>
+							{% include 'icons/euro' %}
 							{{ entry.kosten }}
 						</li>
 					{% endif %}
