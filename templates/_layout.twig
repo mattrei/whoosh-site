@@ -75,24 +75,19 @@
 
 <header id="mainHeader" class="fixed top-0 w-full z-40 text-center bg-opacity-75 bg-white">
 	<div class="flex justify-between items-center xl:container px-3 py-4 mx-auto">
-		{# mobil soll das logo der nav button sein #}
-		<button id="navToggle" class="block md:hidden">
-			<img src="/assets/whoosh-logo.svg" class="block h-6 w-auto" alt="Whoosh Logo">
-		</button>
 		
-		{# am desktop ist logo ein link zur startseite #}
-		<a href="{{ url('/') }}" class="hidden md:block ">
+		<a href="{{ url('/') }}" class="">
 			<img src="/assets/whoosh-logo.svg" class="h-6 w-auto" alt="Whoosh Logo">
 		</a>
 		
-		{# <button id="menuButton" aria-label="Toggle Menu" onclick="document.body.classList.toggle('openNav'); return false;">
+		<button class="md:hidden" id="menuButton" aria-label="Toggle Menu" onclick="document.body.classList.toggle('openNav'); return false;">
 			<span id="topBar" class="bar"></span>
 			<span id="middleBar" class="bar">
 				<span class="inside"></span>
 				<span class="inside"></span>
 			</span>
 			<span id="bottomBar" class="bar"></span>
-		</button> #}
+		</button>
 		
 		<div id="mainNav" class="hidden lg:block">
 			{% include '_nav' with {
@@ -101,7 +96,7 @@
 			} %}
 		</div>
 		
-		<div class="flex items-center text-sm md:text-md">
+		<div class="hidden md:flex items-center text-md">
 			<div class="hidden md:block">{{ now | date('D M j | H:i') }}</div>
 			<div class="block md:hidden">{{ now | date('d.m. | H:i') }}</div>
 			&nbsp;|&nbsp;

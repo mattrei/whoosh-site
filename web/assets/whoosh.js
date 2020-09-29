@@ -15,7 +15,7 @@ function updateTime(){
     }
 }
 
-const toggleNavButton = document.querySelector('#navToggle');
+const toggleNavButton = document.querySelector('#menuButton');
 const mobileNav = document.querySelector('#mobileNav');
 const eventsList = document.querySelector('#eventsList');
 if( toggleNavButton ){

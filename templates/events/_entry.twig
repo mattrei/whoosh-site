@@ -94,10 +94,10 @@
 			</div>
 		</div>
 		
-<!--
+{#
 		{% if entry.user | length %}
 			<ul class="user mb-16">
-				{% for user in entry.user %}
+				{% for user in entry.user.all %}
 					<li>
 						{{ user.title }}:
 						
@@ -108,7 +108,7 @@
 				{% endfor %}
 			</ul>
 		{% endif %}
--->		
+#}
 		
 		<div class="contentBlocks">
 			{% include '_contentBlocks' %}
