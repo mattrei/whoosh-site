@@ -30,7 +30,7 @@
 					<li class="mb-4 flex items-center">
 						{% include 'icons/calendar' %}
 						
-						{{ entry.startdatum | date('d.m.Y') }}
+						{{ entry.startdatum | date('D d.m.Y') }}
 						{% if dayDiff != 0 %}
 							&mdash;
 							{{ entry.enddatum | date('d.m.Y') }}
@@ -75,7 +75,7 @@
 						</li>
 					{% endif %}
 					
-					{% if entry.user | length %}
+					{% if entry.user | length and entry.user.one.telephone | length %}
 						<li class="mb-4 flex items-center">
 							{% include 'icons/call' %}
 							{{ entry.user.one.telephone }},
