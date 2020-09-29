@@ -158,4 +158,23 @@ a {
 #eventsList[data-show="past"] li.past {
   display: flex; }
 
+.ionicon {
+  height: 1em;
+  width: 1em; }
+
+.ionicon * {
+  fill: currentColor; }
+
+.ionicon * {
+  stroke: currentColor; }
+
+.ionicon-stroke-width {
+  stroke-width: 32px; }
+
+.ionicon-fill-none {
+  fill: none; }
+
+.hydrated {
+  visibility: inherit; }
+
 /*# sourceMappingURL=whoosh.css.map */
