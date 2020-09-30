@@ -9,11 +9,11 @@
 			{{ entry.title }}
 		</h1>
 		
-		<div class="md:flex items-center justify-center mb-8">
+		<div class="md:flex flex-wrap items-center justify-center mb-8">
 			<div class="flex-initial pr-6 mb-6">
 				{% if entry.portrait | length %}
 					{% set img = entry.portrait.one %}
-					<img class="rounded-lg max-w-xl mx-auto h-auto"
+					<img class="rounded-lg md:max-w-md h-auto"
 					     src="{{ img.getUrl() }}"
 					     alt="Portrait von {{ entry.title }}"
 					     sizes="95vw, (min-width: 768px) 448px"
@@ -21,6 +21,32 @@
 					     width="{{ img.width }}"
 					     height="{{ img.height }}">
 				{% endif %}
+			</div>
+			<div class="">
+				<ul class="">
+					<li class="mb-4 flex items-center">
+						{% include 'icons/mail' %}
+						{{entry.email}}
+					</li>
+					{% if entry.telephone | length %}
+					<li class="mb-4 flex items-center">
+						{% include 'icons/call' %}
+						{{entry.telephone}}
+					</li>
+					{% endif %}
+					{% if entry.twitter | length %}
+						<li class="mb-4 flex items-center">
+							{% include 'icons/twitter' %}
+							<a href="https://twitter.com/{{ entry.twitter }}"target="_blank">{{entry.twitter}}</a>
+						</li>
+					{% endif %}
+					{% if entry.facebook | length %}
+						<li class="mb-4 flex items-center"> 
+							{% include 'icons/facebook' %} 
+							<a href="https://fb.me/{{ entry.facebook }}" target="_blank">{{ entry.facebook }}</a>
+						</li>
+					{% endif %}
+				</ul>
 			</div>
 		</div>
 		
