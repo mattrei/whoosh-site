@@ -89,14 +89,14 @@
 			<span id="bottomBar" class="bar"></span>
 		</button>
 		
-		<div id="mainNav" class="hidden lg:block">
+		<div id="mainNav" class="hidden md:block">
 			{% include '_nav' with {
 				class: "text-xl flex",
 				subclass: "px-4 hover:underline"
 			} %}
 		</div>
 		
-		<div class="hidden md:flex items-center text-md">
+		<div class="hidden lg:flex items-center text-md">
 			<div class="hidden md:block">{{ now | date('D M j | H:i') }}</div>
 			<div class="block md:hidden">{{ now | date('d.m. | H:i') }}</div>
 			&nbsp;|&nbsp;
