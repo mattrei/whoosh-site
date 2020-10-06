@@ -25,16 +25,18 @@
 			
 			<div class="flex-1">
 				<ul class="">
-					<li class="mb-4 flex items-center">
-						{% include 'icons/mail' %}
-						{{entry.email}}
-					</li>
+					{% if entry.email | length %}
+						<li class="mb-4 flex items-center">
+							{% include 'icons/mail' %}
+							<a href="mailto:{{ entry.email }}">{{ entry.email }}</a>
+						</li>
+					{% endif %}
 					
 					{% if entry.telephone | length %}
-					<li class="mb-4 flex items-center">
-						{% include 'icons/call' %}
-						{{entry.telephone}}
-					</li>
+						<li class="mb-4 flex items-center">
+							{% include 'icons/call' %}
+							<a href="tel:{{ entry.telephone }}">{{ entry.telephone }}</a>
+						</li>
 					{% endif %}
 					
 					{% if entry.twitter | length %}
