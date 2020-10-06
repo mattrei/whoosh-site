@@ -26,63 +26,15 @@
 			
 			<div class="flex-1">
 				<ul class="">
-					<li class="mb-4 flex items-center">
-						{% include 'icons/calendar' %}
-						
-						{{ entry.startdatum | date('D d.m.Y') }}
-						{% if dayDiff != 0 %}
-							&mdash;
-							{{ entry.enddatum | date('d.m.Y') }}
-							{{ entry.enddatum | date('H:i') }}
-						{% endif %}
-					</li>
-					
-					<li class="mb-4 flex items-center">
-						{% include 'icons/time' %}
-						{{ entry.startdatum | date('H:i') }}
-						
-						{% if dayDiff == 0 %}
-							&mdash; {{ entry.enddatum | date('H:i') }}
-						{% endif %}
-					</li>
-					
-					<li class="mb-4 flex items-center">
-						{% include 'icons/hourglass' %}
-						
-						{{ date(entry.enddatum | date('c')).diff(date(entry.startdatum | date('c'))).format('%h h %i mins') }}
-					</li>
-					
-					{% if entry.kosten | length %}
-						<li class="mb-4 flex items-center">
-							{% include 'icons/euro' %}
-							{{ entry.kosten }}
-						</li>
-					{% endif %}
-					
-					{% if entry.ortTreffpunkt | length %}
-						<li class="mb-4 flex items-center">
-							{% include 'icons/location' %}
-							{{ entry.ortTreffpunkt | nl2br }}
-						</li>
-					{% endif %}
-					
-					{% if entry.koordinaten | length %}
-						<li class="mb-4">
-							<a class=" flex items-center" href="{{ entry.koordinaten }}" target="_blank">
-								{% include 'icons/map' %}
-								Google Maps</a>
-						</li>
-					{% endif %}
-					
-					{% if entry.user | length and entry.user.one.telephone | length %}
+					{% if entry.personen | length and entry.personen.one.telephone | length %}
 						<li class="mb-4 flex items-center">
 							{% include 'icons/call' %}
-							{{ entry.user.one.telephone }},
-								{{ entry.user.one.title }}
+							{{ entry.personen.one.telephone }},
+								{{ entry.personen.one.title }}
 						</li>
 						<li class="mb-4 flex items-center">
 							{% include 'icons/mail' %}
-							<a href="mailto:{{ entry.user.one.email }}">{{entry.user.one.email}}</a>
+							<a href="mailto:{{ entry.personen.one.email }}">{{entry.personen.one.email}}</a>
 						</li>
 					{% endif %}
 					
@@ -115,13 +67,6 @@
 		
 		<div class="contentBlocks">
 			{% include '_contentBlocks' %}
-
-			{% if entry.projekt | length %}
-			{% include '_contentBlocks' with {
-				entry: entry.projekt.one
-			} %}
-			{% endif %}
-
 		</div>
 		
 		{% if entry.anmerkungen | length %}
