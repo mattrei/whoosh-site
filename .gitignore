@@ -1,3 +1,4 @@
+*.swp
 *.scssc
 
 /.env
@@ -11,7 +12,8 @@ package-lock.json
 /config
 /modules
 
-/web
+/web/cpresources
+/web/uploads
 
 /tailwind
 /usage

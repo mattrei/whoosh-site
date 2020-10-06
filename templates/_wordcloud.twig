@@ -31,9 +31,9 @@
 
 </style>
 
-<script src="//d3js.org/d3.v5.min.js"></script>
-<script src="//unpkg.com/d3-array@2"></script>
-<script src="//unpkg.com/d3-cloud@1"></script>
+<script src="/assets/d3.v5.min.js"></script>
+<script src="/assets/d3-array@2.min.js"></script>
+<script src="/assets/d3-cloud@1.min.js"></script>
 <script>
 function createWordCloud(data, selector) {
 
@@ -48,7 +48,7 @@ console.log(width, height, selector)
   const fill = d3.scaleOrdinal(d3.schemeCategory10);
   const s = d3.scaleLinear()
     .domain([d3.min(data.map(d => d.value)), d3.max(data.map(d => d.value))])
-    .range([16, 42]);
+    .range([30, 42]);
 
 
   const fontFamily = "Verdana, Arial, Helvetica, sans-serif";
@@ -62,7 +62,7 @@ console.log(width, height, selector)
   const cloud = d3.layout.cloud()
     .size([width, height])
     .words(data.map(d => Object.create(d)))
-    .padding(Math.random() * 3 + 2)
+    .padding(Math.random() * 5 + 5)
     //.rotate(() => Math.random() * 90 - 45)
     .rotate(() => ~~(Math.random() * 2) * 90 )
     .font(fontFamily)
