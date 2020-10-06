@@ -28,22 +28,32 @@
 						{% include 'icons/mail' %}
 						{{entry.email}}
 					</li>
+					
 					{% if entry.telephone | length %}
 					<li class="mb-4 flex items-center">
 						{% include 'icons/call' %}
 						{{entry.telephone}}
 					</li>
 					{% endif %}
+					
 					{% if entry.twitter | length %}
 						<li class="mb-4 flex items-center">
 							{% include 'icons/twitter' %}
 							<a href="https://twitter.com/{{ entry.twitter }}"target="_blank">{{entry.twitter}}</a>
 						</li>
 					{% endif %}
+					
 					{% if entry.facebook | length %}
-						<li class="mb-4 flex items-center"> 
-							{% include 'icons/facebook' %} 
+						<li class="mb-4 flex items-center">
+							{% include 'icons/facebook' %}
 							<a href="https://fb.me/{{ entry.facebook }}" target="_blank">{{ entry.facebook }}</a>
+						</li>
+					{% endif %}
+					
+					{% if entry.facebook | length %}
+						<li class="mb-4 flex items-center">
+							{% include 'icons/instagram' %}
+							<a href="https://instagram.com/{{ entry.instagram }}" target="_blank">{{ entry.instagram }}</a>
 						</li>
 					{% endif %}
 				</ul>
