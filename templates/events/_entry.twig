@@ -10,11 +10,11 @@
 			{{ entry.title }}
 		</h1>
 		
-		<div class="md:flex flex-wrap items-center justify-center mb-8">
-			<div class="flex-initial md:pr-6 mb-6">
+		<div class="max-w-2xl md:max-w-4xl mx-auto md:flex flex-wrap items-center justify-center mb-8">
+			<div class="flex-1 md:pr-6 mb-6">
 				{% if entry.vorschaubild | length %}
 					{% set img = entry.vorschaubild.one %}
-					<img class="rounded-lg md:max-w-md h-auto"
+					<img class="rounded-lg md:max-w-md h-auto block max-w-lg mx-auto"
 					     alt="{{ img.altText }}"
 					     width="{{ img.width }}"
 					     height="{{ img.height }}"
@@ -24,8 +24,7 @@
 				{% endif %}
 			</div>
 			
-			
-			<div class="">
+			<div class="flex-1">
 				<ul class="">
 					<li class="mb-4 flex items-center">
 						{% include 'icons/calendar' %}
