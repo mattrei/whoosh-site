@@ -1,0 +1,10 @@
+{% set transform = {
+	mode: 'crop',
+	width: width,
+	height: width,
+	quality: 75,
+	position: 'center-center',
+	format: 'png'
+} %}
+
+{{ favicon.getUrl( transform ) }}
