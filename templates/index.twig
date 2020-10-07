@@ -2,24 +2,23 @@
 {% extends '_layout' %}
 
 {% block content %}
-
-		
-	<div class="h-screen flex flex-col justify-center">
 	
+	<div class="min-h-screen flex flex-col justify-center">
+		
 		<img src="/assets/whoosh-logo.svg" class="block mx-auto px-4" alt="Whoosh Logo">
 		
 		<div class="xl:container px-3 mx-auto lg:px-4">
 			<div class="introText text-xl md:text-3xl lg:text-4xl text-center p-4 md:p-16 pt-8 md:pt-16">
 				{{ start.introText | nl2br }}
 			</div>
-			
+		
 		</div>
-<div class="container h-32 mx-auto" >
-		{% include '_wordcloud' with {
+		<div class="container h-32 mx-auto">
+			{% include '_wordcloud' with {
 				class: "text-xl flex",
 				subclass: "px-2 hover:underline"
 			} %}
-</div>
+		</div>
 	</div>
 	
 	<div class="xl:container px-3 mx-auto px-4">
@@ -36,8 +35,8 @@
 					{% include 'events/preview' with {
 						liclass: "py-2",
 						imgclass: "w-20"
-					 } %}
-					
+					} %}
+				
 				{% endfor %}
 			</ul>
 			<br>
