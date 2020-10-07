@@ -41,7 +41,7 @@ function createWordCloud(data, selector) {
   const parent = d3.select(selector);
   if(!parent) return;
   const { width, height } =  parent.node().getBoundingClientRect();
-console.log(width, height, selector)
+  //console.log(width, height, selector)
   if (height === 0) return;
 
 
@@ -109,7 +109,7 @@ console.log(width, height, selector)
   const tags = Array.from(document.querySelector('#tags').children).map((e,i) => {
 	return {text: e.getAttribute('data-title'), href: e.getAttribute('data-href'), value: i}
 	})
-console.log('tags', tags)
+  //console.log('tags', tags)
 
 
   createWordCloud(tags, '#wordcloud')
