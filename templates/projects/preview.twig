@@ -1,0 +1,24 @@
+<li class="{{liclass}} flex items-center justify-between border border-solid border-black border-t-0 border-r-0 border-l-0">
+	
+	<div class="flex-1 desc pr-6">
+		<a href="{{ project.url }}">
+			{{ project.title }}
+		</a>
+	</div>
+	
+	<div class="img flex-none hidden md:block">
+		{% if project.vorschaubild | length %}
+			{% set img = project.vorschaubild.one %}
+			
+			<a href="{{ project.url }}">
+				<img class="block {{imgclass}} rounded-lg h-auto"
+				     src="{{ img.getUrl }}"
+				     alt="{{ img.altText }}"
+				     width="{{ img.width }}"
+				     height="{{ img.height }}"
+				     sizes="160px"
+				     srcset="{% include '_srcset' %}">
+			</a>
+		{% endif %}
+	</div>
+</li>

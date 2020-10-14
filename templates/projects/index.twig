@@ -1,0 +1,32 @@
+{% set bodyClass = "events" %}
+{% extends '_layout' %}
+
+{% block content %}
+	
+	{% set activeTag = "" %}
+	{% if craft.app.request.segments|last != "events" %}
+		{% set slug = craft.app.request.segments|last %}
+		{% set activeTag = craft.tags().group('tags').slug( slug ).one %}
+	{% endif %}
+	
+	
+	<div class="xl:container px-3 mx-auto mt-24">
+		<h1 class="text-4xl lg:text-6xl uppercase font-bold text-center">Projects</h1>
+		
+		
+		<ul id="projectsList" class="my-4 border border-black border-solid border-r-0 border-b-0 border-l-0 mx-auto max-w-4xl" data-show="upcoming">
+			{% set projects = craft.entries
+				.section('projects')
+				.orderBy( 'title asc' )
+			%}
+			
+			{% for project in projects.all %}
+				{% include 'projects/preview' with {
+					liclass: "py-4",
+					imgclass: "md:w-40 sm:w-20"
+				 } %}
+			{% endfor %}
+		</ul>
+	</div>
+
+{% endblock %}

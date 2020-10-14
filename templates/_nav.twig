@@ -1,6 +1,7 @@
 <ul class="text-center {{ class }}">
 	<li class="{{ subclass }}"><a class="{% if craft.app.request.segments|first == "/" %}active font-bold{% endif %}" href="{{ url('/') }}">Start</a></li>
 	<li class="{{ subclass }}"><a class="{% if craft.app.request.segments|first == "events" %}active font-bold{% endif %}" href="{{ url('events') }}">Events</a></li>
+	<li class="{{ subclass }}"><a class="{% if craft.app.request.segments|first == "projects" %}active font-bold{% endif %}" href="{{ url('projects') }}">Projects</a></li>
 	<li class="{{ subclass }}"><a class="{% if craft.app.request.segments|first == "about-us" %}active font-bold{% endif %}" href="{{ url('about-us') }}">About us</a></li>
 	<li class="{{ subclass }}"><a class="{% if craft.app.request.segments|first == "connect" %}active font-bold{% endif %}" href="{{ url('connect') }}">Connect</a></li>
 </ul>
