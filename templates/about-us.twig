@@ -1,0 +1,38 @@
+{% set bodyClass = entry.slug %}
+{% set title = entry.title %}
+
+{% extends '_layout' %}
+
+{% block content %}
+	
+	<div class="xl:container px-3  mx-auto mt-24">
+		<h1 class="text-4xl lg:text-6xl uppercase font-bold text-center mb-2">
+			{{ entry.title }}
+		</h1>
+		<h2 class="text-3xl md:text-4xl uppercase font-bold text-center mt-6 mb-2">Team</h2>
+		
+		<div class="team mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-center pb-8 ">
+			
+			{% for person in shuffle(craft.entries.section('team').all) %}
+				<a href="{{ person.url }}" class="text-center">
+					{% if person.portrait | length %}
+						{% set img = person.portrait.one %}
+						<img class="rounded-lg h-auto" src="{{ img.getUrl }}"
+						     alt="Portrait von {{ person.title }}"
+						     srcset="{% include '_srcset' %}"
+						     width="{{ img.width }}"
+						     height="{{ img.height }}"
+						     sizes="50vw, (min-width: 768px) 30vw, (min-width: 1024px) 25vw, (min-width: 1280px) 300px">
+					{% endif %}
+				</a>
+			{% endfor %}
+		</div>
+		
+		
+		<div class="contentBlocks">
+			{% include '_contentBlocks' %}
+		</div>
+		
+	</div>
+
+{% endblock %}

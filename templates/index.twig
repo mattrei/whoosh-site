@@ -13,7 +13,7 @@
 			</div>
 		
 		</div>
-		<div class="container h-32 mx-auto">
+		<div class="container h-64 mx-auto max-w-2xl">
 			{% include '_wordcloud' with {
 				class: "text-xl flex",
 				subclass: "px-2 hover:underline"
@@ -29,20 +29,20 @@
 				.startdatum( '>=' ~ now | date('Y-m-d') )
 				.orderBy( 'startdatum asc' ).limit( 4 ) %}
 			
-			<ul class="border border-black border-solid border-r-0 border-b-0 border-l-0 max-w-3xl mx-auto">
+			<ul class="border p-2 border-black border-solid border-r-0 border-b-0 border-l-0 max-w-4xl mx-auto">
 				{% for termin in termine.all() %}
 					
 					{% include 'events/preview' with {
 						liclass: "py-2",
-						imgclass: "w-20"
+						imgclass: "w-40"
 					} %}
 				
 				{% endfor %}
 			</ul>
 			<br>
 			
-			<div class="text-center">
-				<a href="{{ url('events') }}">Alle Events</a>
+			<div class="text-center text-3xl">
+				<a href="{{ url('events') }}">All Events...</a>
 			</div>
 		</div>
 	</div>

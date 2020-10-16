@@ -14,7 +14,7 @@
 		<h1 class="text-4xl lg:text-6xl uppercase font-bold text-center">Projects</h1>
 		
 		
-		<ul id="projectsList" class="my-4 border border-black border-solid border-r-0 border-b-0 border-l-0 mx-auto max-w-4xl" data-show="upcoming">
+		<ul id="projectsList" class="my-4 border border-black border-solid border-r-0 border-b-0 border-l-0 mx-auto max-w-xl" >
 			{% set projects = craft.entries
 				.section('projects')
 				.orderBy( 'title asc' )

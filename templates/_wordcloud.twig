@@ -64,7 +64,8 @@ function createWordCloud(data, selector) {
     .words(data.map(d => Object.create(d)))
     .padding(Math.random() * 5 + 5)
     //.rotate(() => Math.random() * 90 - 45)
-    .rotate(() => ~~(Math.random() * 2) * 90 )
+    //.rotate(() => ~~(Math.random() * 2) * 90 )
+    .rotate(0)
     .font(fontFamily)
     .fontSize(d => s(d.value))
     .on("word", ({size, x, y, rotate, text, href}) => {

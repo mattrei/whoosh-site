@@ -18,6 +18,7 @@
 			<button id="showPastEvents" class="px-2 m-2 font-semibold bg-transparent text-blue hover:bg-blue hover:text-white py-2 px-4 border border-blue rounded">Past</button>
 		</div>
 		
+		<!--
 		<ul class="flex justify-center flex-wrap my-12">
 			{% set tags = craft.tags()
 				.group('tags') %}
@@ -30,6 +31,13 @@
 				{% endif %}
 			{% endfor %}
 		</ul>
+		-->
+		<div class="container h-32 mx-auto max-w-4xl">
+			{% include '_wordcloud' with {
+				class: "text-xl flex",
+				subclass: "px-2 hover:underline"
+			} %}
+		</div>
 		
 		<ul id="eventsList" class="my-4 border border-black border-solid border-r-0 border-b-0 border-l-0 mx-auto max-w-4xl" data-show="upcoming">
 			{% set termine = craft.entries
@@ -47,7 +55,7 @@
 			{% for termin in termine.all %}
 				{% include 'events/preview' with {
 					liclass: "py-4",
-					imgclass: "md:w-40 sm:w-20"
+					imgclass: ""
 				 } %}
 			{% endfor %}
 		</ul>
