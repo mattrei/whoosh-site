@@ -24,6 +24,7 @@ if( toggleNavButton ){
     });
 }
 
+/*
 const showUpcomingEventsButton = document.querySelector('#showUpcomingEvents');
 const showPastEventsButton = document.querySelector('#showPastEvents');
 
@@ -48,6 +49,7 @@ if( showUpcomingEventsButton && showPastEventsButton ){
         eventsList.dataset.show = "past";
     })
 }
+ */
 
 const socialContainer = document.querySelector('#socialContainer')
 const showSocialContainerButton = document.querySelector('#showSocialContainerButton');
