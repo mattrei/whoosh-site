@@ -172,15 +172,19 @@ a {
 .textBlock p:not(:last-child) {
   margin-bottom: 1.1em; }
 
-#eventsList[data-show="upcoming"] li.upcoming {
-  display: flex; }
-#eventsList[data-show="upcoming"] li.past {
-  display: none; }
-#eventsList[data-show="past"] li.upcoming {
-  display: none; }
-#eventsList[data-show="past"] li.past {
-  display: flex; }
+/*
+#eventsList{
+  &[data-show="upcoming"]{
+    li.upcoming{ display: flex; }
+    li.past{ display: none; }
+  }
 
+  &[data-show="past"]{
+    li.upcoming{ display: none; }
+    li.past{ display: flex; }
+  }
+}
+ */
 .ionicon {
   height: 1em;
   width: 1em; }

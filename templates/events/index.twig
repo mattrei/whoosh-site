@@ -12,20 +12,25 @@
 	{% set show = craft.app.request.getQueryParam('show') %}
 	{% set orderBy = "startdatum asc" %}
 	{% set dateParam = '>=' ~ now | date('Y-m-d') %}
+	{% set upcomingButtonClass = "bg-blue text-white" %}
+	{% set pastButtonClass = "bg-transparent text-blue" %}
 	
 	{% if show == "past" %}
 		{% set orderBy = "startdatum desc" %}
 		{% set dateParam = '<=' ~ now | date('Y-m-d') %}
+		
+		{% set upcomingButtonClass = "bg-transparent text-blue" %}
+		{% set pastButtonClass = "bg-blue text-white" %}
 	{% endif %}
 	
 	<div class="xl:container px-3 mx-auto mt-24">
 		<h1 class="text-4xl lg:text-6xl uppercase font-bold text-center">Events</h1>
 		
 		<div class="flex justify-center my-12 ">
-			<a href="{{ url('events') }}" class="px-2 m-2 font-semibold bg-blue text-white hover:bg-blue hover:text-white py-2 px-4 border border-blue rounded">
+			<a href="{{ url('events') }}" class="{{ upcomingButtonClass }} px-2 m-2 font-semibold  hover:bg-blue hover:text-white py-2 px-4 border border-solid border-blue rounded">
 				Upcoming
 			</a>
-			<a href="{{ url('events?show=past') }}" class="px-2 m-2 font-semibold bg-transparent text-blue hover:bg-blue hover:text-white py-2 px-4 border border-blue rounded">
+			<a href="{{ url('events?show=past') }}" class="{{ pastButtonClass }} px-2 m-2 font-semibold hover:bg-blue hover:text-white py-2 px-4 border border-solid border-blue rounded">
 				Past
 			</a>
 		</div>
