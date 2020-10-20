@@ -1050,6 +1050,18 @@ video {
   color: rgba(0, 122, 206, var(--text-opacity));
 }
 
+.visited\:text-white:visited {
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+}
+
+.visited\:text-blue:visited {
+  --text-opacity: 1;
+  color: #007ace;
+  color: rgba(0, 122, 206, var(--text-opacity));
+}
+
 .uppercase {
   text-transform: uppercase;
 }
