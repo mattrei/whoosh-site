@@ -925,9 +925,8 @@ video {
   min-height: 100vh;
 }
 
-.object-center {
-  -o-object-position: center;
-     object-position: center;
+.opacity-25 {
+  opacity: 0.25;
 }
 
 .p-2 {

@@ -13,8 +13,8 @@
 		
 		<div class="team mt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-center pb-8 ">
 			
-			{% for person in shuffle(craft.entries.section('team').all) %}
-				<div class="group container">
+			{% for person in shuffle( craft.entries.section('team').all ) %}
+				<div class="group">
 					{% set img = person.portrait.one %}
 					<a href="{{ person.url }}">
 						<img class="rounded-lg h-auto group-hover:opacity-50" src="{{ img.getUrl }}"
@@ -25,7 +25,7 @@
 						     sizes="50vw, (min-width: 768px) 30vw, (min-width: 1024px) 25vw, (min-width: 1280px) 300px"/>
 					</a>
 					
-					<div class="object-center opacity-10 group-hover:opacity-100 mt-2">
+					<div class="opacity-25 group-hover:opacity-100 mt-2">
 						<a href="{{ person.url }}" class="block text-center text-2xl">
 							{{ person.title }}
 						</a>
