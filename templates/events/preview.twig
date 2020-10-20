@@ -1,11 +1,11 @@
 <li class="{% if termin.startdatum | date('Y-m-d') >= now | date('Y-m-d') %}upcoming{% else %}past{% endif %} {{liclass}} flex items-center justify-between border border-solid border-black border-t-0 border-r-0 border-l-0">
-	<div class="flex-none date font-bold text-center uppercase pr-6 md:text-2xl sm:text-l">
+	<div class="flex-none date font-bold text-center uppercase pr-6 text-l md:text-2xl">
 		{{ termin.startdatum | date('d') }}<br/>
 		{{ termin.startdatum | date('M') }}<br/>
 		<span class="text-sm font-normal">{{ termin.startdatum | date('Y') }}</span>
 	</div>
 	
-	<div class="flex-none time pr-6 text-2xl">
+	<div class="flex-none time pr-6 text-xl md:text-2xl">
 		{{ termin.startdatum | date('H:i') }}
 	</div>
 	<div class="img flex-none hidden pr-6 md:block">
@@ -24,7 +24,7 @@
 		{% endif %}
 	</div>
 	
-		<div class="flex-1 desc pr-6 text-3xl font-bold">
+		<div class="flex-1 desc text-xl md:text-2xl lg:text-3xl font-bold">
 		<a href="{{ termin.url }}">
 			{{ termin.title }}
 		</a>
