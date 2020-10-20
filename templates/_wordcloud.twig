@@ -106,7 +106,11 @@
 
                 function handleClick(d, i) {
                     const e = d3.select(this);
-                    window.location.href = e.attr('data-href');
+                    if (document.body.classList.contains('past')) {
+                        window.location.href = e.attr('data-href').replace('events/', 'events/past/');
+                    } else {
+                        window.location.href = e.attr('data-href');
+                    }
                 }
             });
 

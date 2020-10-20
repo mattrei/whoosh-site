@@ -1,4 +1,7 @@
 {% set bodyClass = "events" %}
+{% if "past" in craft.app.request.segments %}
+	{% set bodyClass = bodyClass ~ " past" %}
+{% endif %}
 {% extends '_layout' %}
 
 {% block content %}
@@ -16,7 +19,8 @@
 	{% endif %}
 	
 	
-	{% if craft.app.request.segments|contains == "past" %}
+	{% if "past" in craft.app.request.segments %}
+		{% set bodyClass = bodyClass ~ " past" %}
 		{% set orderBy = "startdatum desc" %}
 		{% set dateParam = '<=' ~ now | date('Y-m-d') %}
 		
@@ -28,10 +32,12 @@
 		<h1 class="text-4xl lg:text-6xl uppercase font-bold text-center">Events</h1>
 		
 		<div class="flex justify-center my-12 ">
-			<a href="{{ url('events') }}" class="{{ upcomingButtonClass }} px-2 m-2 font-semibold  hover:bg-blue hover:text-white py-2 px-4 border border-solid border-blue rounded">
+			<a href="{{ url('events') }}"
+			   class="{{ upcomingButtonClass }} px-2 m-2 font-semibold  hover:bg-blue hover:text-white py-2 px-4 border border-solid border-blue rounded">
 				Upcoming
 			</a>
-			<a href="{{ url('events?show=past') }}" class="{{ pastButtonClass }} px-2 m-2 font-semibold hover:bg-blue hover:text-white py-2 px-4 border border-solid border-blue rounded">
+			<a href="{{ url('events/past') }}"
+			   class="{{ pastButtonClass }} px-2 m-2 font-semibold hover:bg-blue hover:text-white py-2 px-4 border border-solid border-blue rounded">
 				Past
 			</a>
 		</div>
@@ -39,7 +45,7 @@
 		<!--
 		<ul class="flex justify-center flex-wrap my-12">
 			{% set tags = craft.tags()
-				.group('tags') %}
+			.group('tags') %}
 			
 			{% for tag in tags.all() %}
 				{% if craft.entries.section( 'termine' ).relatedTo( tag ) | length %}
@@ -57,7 +63,9 @@
 			} %}
 		</div>
 		
-		<ul id="eventsList" class="my-4 border border-black border-solid border-r-0 border-b-0 border-l-0 mx-auto max-w-4xl" data-show="upcoming">
+		<ul id="eventsList"
+		    class="my-4 border border-black border-solid border-r-0 border-b-0 border-l-0 mx-auto max-w-4xl"
+		    data-show="upcoming">
 			{% set termine = craft.entries
 				.section( 'termine' )
 				.relatedTo( activeTag )
@@ -73,11 +81,18 @@
 			
 			{% for termin in termine.all %}
 				{% include 'events/preview' with {
-					liclass: "py-4",
+					liclass: "py-4 px-2",
 					imgclass: ""
-				 } %}
+				} %}
 			{% endfor %}
+			
 		</ul>
+		
+		{% if termine | length < 1 %}
+			<div class="text-center mt-16 text-xl md:text-2xl font-bold">
+				Leider keine Termine für die aktuelle Auswahl vorhanden
+			</div>
+		{% endif %}
 	</div>
 
 {% endblock %}
