@@ -929,6 +929,14 @@ video {
   opacity: 0.25;
 }
 
+.group:hover .group-hover\:opacity-50 {
+  opacity: 0.5;
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
