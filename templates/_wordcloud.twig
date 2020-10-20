@@ -39,6 +39,7 @@
 <script src="/assets/d3-array@2.min.js"></script>
 <script src="/assets/d3-cloud@1.min.js"></script>
 <script>
+
     function createWordCloud(data, selector) {
 
         //https://codepen.io/znak/pen/rOgXoV
@@ -105,8 +106,7 @@
 
                 function handleClick(d, i) {
                     const e = d3.select(this);
-                    //window.location.href = e.attr('data-href');
-	                 
+                    window.location.href = e.attr('data-href');
                 }
             });
 

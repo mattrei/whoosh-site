@@ -3,19 +3,20 @@
 
 {% block content %}
 	
-	{% set activeTag = "" %}
-	{% if craft.app.request.segments|last != "events" %}
-		{% set slug = craft.app.request.segments|last %}
-		{% set activeTag = craft.tags().group('tags').slug( slug ).one %}
-	{% endif %}
-	
-	{% set show = craft.app.request.getQueryParam('show') %}
 	{% set orderBy = "startdatum asc" %}
 	{% set dateParam = '>=' ~ now | date('Y-m-d') %}
 	{% set upcomingButtonClass = "bg-blue text-white visited:text-white" %}
 	{% set pastButtonClass = "bg-transparent text-blue visited:text-blue" %}
 	
-	{% if show == "past" %}
+	{% set activeTag = "" %}
+	
+	{% if craft.app.request.segments|last != "events" and craft.app.request.segments|last != "past" %}
+		{% set slug = craft.app.request.segments|last %}
+		{% set activeTag = craft.tags().group('tags').slug( slug ).one %}
+	{% endif %}
+	
+	
+	{% if craft.app.request.segments|contains == "past" %}
 		{% set orderBy = "startdatum desc" %}
 		{% set dateParam = '<=' ~ now | date('Y-m-d') %}
 		
