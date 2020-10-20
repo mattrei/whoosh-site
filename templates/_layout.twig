@@ -117,7 +117,7 @@
 		<div id="mainNav" class="hidden md:block">
 			{% include '_nav' with {
 				class: "text-xl flex",
-				subclass: "px-4 hover:underline"
+				subclass: "px-4 hover:underline transition ease-in-out duration-700 transform"
 			} %}
 		</div>
 		
@@ -147,7 +147,7 @@
 			<div class="inline-block hover:text-blue">
 				{% include 'icons/heart' %}
 			</div>
-			<div id="socialContainer" class="inline-block hidden">
+			<div id="socialContainer" class="inline-block hidden transition ease-in duration-700">
 				<ul>
 					<li class="inline-block pl-3 hover:text-blue">
 						<a href="https://facebook.com/whoosh.wien" target="_blank">{% include 'icons/facebook' %}</a>
