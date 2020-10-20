@@ -1,4 +1,9 @@
-<li class="{% if termin.startdatum | date('Y-m-d') >= now | date('Y-m-d') %}upcoming{% else %}past{% endif %} {{ liclass }} border border-solid border-black border-t-0 border-r-0 border-l-0">
+{% set tagslist = "" %}
+{% for tag in termin.tags %}
+	{% set tagslist = tagslist ~ " tag-" ~ tag.slug %}
+{% endfor %}
+
+<li class="{{ tagslist }} {% if termin.startdatum | date('Y-m-d') >= now | date('Y-m-d') %}upcoming{% else %}past{% endif %} {{ liclass }} border border-solid border-black border-t-0 border-r-0 border-l-0">
 	<a class="flex items-center justify-between" href="{{ termin.url }}">
 		<div class="flex-none date font-bold text-center uppercase pr-6 text-l md:text-2xl">
 			{{ termin.startdatum | date('d') }}<br/>
