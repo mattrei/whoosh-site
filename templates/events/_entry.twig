@@ -116,11 +116,6 @@
 		<div class="contentBlocks">
 			{% include '_contentBlocks' %}
 
-			{% if entry.projekt | length %}
-			{% include '_contentBlocks' with {
-				entry: entry.projekt.one
-			} %}
-			{% endif %}
 
 		</div>
 		
