@@ -18,3 +18,5 @@ package-lock.json
 /tailwind
 /usage
 /storage
+
+composer.json
