@@ -48,7 +48,7 @@
 			.group('tags') %}
 			
 			{% for tag in tags.all() %}
-				{% if craft.entries.section( 'termine' ).relatedTo( tag ) | length %}
+				{% if craft.entries.section( 'events' ).relatedTo( tag ) | length %}
 					
 					<li class="px-2"><a class="hover:text-blue " href="{{ url('events/' ~ tag.slug ) }}">{{ tag.title }}</a></li>
 				
@@ -66,20 +66,20 @@
 		<ul id="eventsList"
 		    class="my-4 border border-black border-solid border-r-0 border-b-0 border-l-0 mx-auto max-w-4xl"
 		    data-show="upcoming">
-			{% set termine = craft.entries
-				.section( 'termine' )
+			{% set events = craft.entries
+				.section( 'events' )
 				.relatedTo( activeTag )
 				.startdatum( dateParam )
 				.orderBy( orderBy ) %}
 			
 			{#
-			{% set termine = craft.entries
-				.section('termine')
+			{% set events = craft.entries
+				.section('events')
 				.startdatum( '>=' ~ now | date('Y-m-d') )
 				.orderBy( 'startdatum asc' ) %}
 			#}
 			
-			{% for termin in termine.all %}
+			{% for event in events.all %}
 				{% include 'events/preview' with {
 					liclass: "py-4 px-2",
 					imgclass: ""
@@ -88,7 +88,7 @@
 			
 		</ul>
 		
-		{% if termine | length < 1 %}
+		{% if events | length < 1 %}
 			<div class="text-center mt-16 text-xl md:text-2xl font-bold">
 				Leider keine Termine für die aktuelle Auswahl vorhanden
 			</div>

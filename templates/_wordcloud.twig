@@ -2,7 +2,7 @@
 	{% set tags = craft.tags()
 		.group('tags') %}
 	{% for tag in tags.all() %}
-		{% if craft.entries.section( 'termine' ).relatedTo( tag ) | length %}
+		{% if craft.entries.section( 'events' ).relatedTo( tag ) | length %}
 			<li data-href="{{ url('events/' ~ tag.slug ) }}"
 			    data-slug="{{ tag.slug }}"
 			    data-title="{{ tag.title }}"></li>

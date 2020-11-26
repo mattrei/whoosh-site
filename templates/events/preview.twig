@@ -1,22 +1,22 @@
 {% set tagslist = "" %}
-{% for tag in termin.tags %}
+{% for tag in event.tags %}
 	{% set tagslist = tagslist ~ " tag-" ~ tag.slug %}
 {% endfor %}
 
-<li class="{{ tagslist }} {% if termin.startdatum | date('Y-m-d') >= now | date('Y-m-d') %}upcoming{% else %}past{% endif %} border border-solid border-black border-t-0 border-r-0 border-l-0">
-	<a class="{{ liclass }} flex items-center justify-between hover:text-blue" href="{{ termin.url }}">
+<li class="{{ tagslist }} {% if event.startdatum | date('Y-m-d') >= now | date('Y-m-d') %}upcoming{% else %}past{% endif %} border border-solid border-black border-t-0 border-r-0 border-l-0">
+	<a class="{{ liclass }} flex items-center justify-between hover:text-blue" href="{{ event.url }}">
 		<div class="flex-none date font-bold text-center uppercase pr-6 text-l md:text-2xl">
-			{{ termin.startdatum | date('d') }}<br/>
-			{{ termin.startdatum | date('M') }}<br/>
-			<span class="text-sm font-normal">{{ termin.startdatum | date('Y') }}</span>
+			{{ event.startdatum | date('d') }}<br/>
+			{{ event.startdatum | date('M') }}<br/>
+			<span class="text-sm font-normal">{{ event.startdatum | date('Y') }}</span>
 		</div>
 		
 		<div class="flex-none time pr-6 text-xl md:text-2xl">
-			{{ termin.startdatum | date('H:i') }}
+			{{ event.startdatum | date('H:i') }}
 		</div>
 		<div class="img flex-none hidden pr-6 md:block">
-			{% if termin.vorschaubild | length %}
-				{% set img = termin.vorschaubild.one %}
+			{% if event.vorschaubild | length %}
+				{% set img = event.vorschaubild.one %}
 				
 				<img class="block {{ imgclass }} rounded-lg h-auto"
 				     src="{{ img.getUrl }}"
@@ -30,7 +30,7 @@
 		</div>
 		
 		<div class="flex-1 desc text-xl md:text-2xl font-bold">
-			{{ termin.title }}
+			{{ event.title }}
 		</div>
 	</a>
 </li>
