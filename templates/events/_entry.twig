@@ -2,6 +2,10 @@
 {% set title = entry.title %}
 {% extends '_layout' %}
 
+{% if entry.vorschaubild | length %}
+	{% set shareImg = entry.vorschaubild.one %}
+{% endif %}
+
 {% set dayDiff = date(entry.enddatum | date('c')).diff(date(entry.startdatum | date('c'))).days %}
 {% block content %}
 	
